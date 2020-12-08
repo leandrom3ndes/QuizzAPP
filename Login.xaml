@@ -1,0 +1,32 @@
+﻿<Page x:Class="QuizAppWPF.Login"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuizAppWPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Login">
+
+    <Grid Opacity="0.985" Background="#FF1F1D1D">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Image Source="quizTime.jpg" Stretch="Fill" Grid.ColumnSpan="5" Grid.RowSpan="4"/>
+
+        <Label HorizontalAlignment="Left" Margin="333,44,0,0" VerticalAlignment="Top" Height="65" Width="99" FontSize="20" FontWeight="Bold"/>
+        <Button Content="Login" HorizontalAlignment="Left" Margin="107,0,0,0" VerticalAlignment="Top" Width="267" Height="94" BorderBrush="#FF16A6A0" FontSize="36" Click="Button_Click" Foreground="White" Background="{x:Null}" Grid.ColumnSpan="3" Grid.Row="3" Grid.Column="1"/>
+
+    </Grid>
+</Page>

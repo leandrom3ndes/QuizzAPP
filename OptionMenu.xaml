@@ -1,0 +1,20 @@
+﻿<Page x:Class="QuizAppWPF.OptionMenu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuizAppWPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OptionMenu">
+
+    <Grid Background="#FF292929">
+        <Image Source="neonwallRed.jpg" Stretch="Fill"/>
+
+        <Label Content="Quiz App" HorizontalAlignment="Center" Margin="237,0,230,0" VerticalAlignment="Top" Width="333" FlowDirection="RightToLeft" TextOptions.TextHintingMode="Animated" HorizontalContentAlignment="Center" FontSize="48" Foreground="#FFB94B4B" Height="92" FontFamily="Showcard Gothic" Background="{x:Null}"/>
+        <Button x:Name="Jogo" Content="Iniciar jogo" HorizontalAlignment="Left" Margin="254,122,0,0" VerticalAlignment="Top" Width="305" Height="51" Click="Button_Click" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
+        <Button x:Name="Classificacao" Content="Ver classificação" HorizontalAlignment="Left" Margin="254,214,0,0" VerticalAlignment="Top" Width="305" Height="58" Click="Button_Click" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFFB0000"/>
+        <Button x:Name="Sair" Content="Sair" HorizontalAlignment="Left" Margin="254,304,0,0" VerticalAlignment="Top" Width="305" Height="46" Click="Button_Click" Foreground="White" FontWeight="Bold" FontSize="22" Background="{x:Null}" BorderBrush="#FFFD0707"/>
+
+    </Grid>
+</Page>
