@@ -20,6 +20,7 @@ namespace QuizAppWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,5 +31,9 @@ namespace QuizAppWPF
         private void Button_Click(object sender, RoutedEventArgs e)
         {
         }
+
+
+
     }
+
 }

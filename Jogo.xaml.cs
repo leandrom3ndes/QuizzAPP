@@ -12,6 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Collections;
+using System.Text.RegularExpressions;
 
 namespace QuizAppWPF
 {
@@ -23,6 +29,7 @@ namespace QuizAppWPF
         public Jogo()
         {
             InitializeComponent();
+            teste.Content = "teste";
         }
     }
 }
