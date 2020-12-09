@@ -36,81 +36,11 @@ namespace QuizAppWPF
             InitializeComponent();
         }
 
-        class Resposta
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            public string value { get; set; }
-            public bool correctAnswer { get; set; }
-            public Resposta(string value, bool correctAnswer)
-            {
-                this.value = value;
-                this.correctAnswer = correctAnswer;
-            }
-
-        }
-        class Questao
-        {
-            public string value { get; set; }
-            public int pontuacao { get; set; }
-            public List<Resposta> Respostas { get; set; }
-            public Questao(string value, int pontuacao, List<Resposta> Respostas)
-            {
-                this.value = value;
-                this.pontuacao = pontuacao;
-                this.Respostas = Respostas;
-            }
-        }
-
-        static int pontuacao = 0;
-
-        static List<Questao> Questoes = new List<Questao>();
-
-        private static string BaseUrl = "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy";
-
-        private static string categoriesUrl = "https://opentdb.com/api_category.php";
-
-        private static IDictionary<int, int> categories = new Dictionary<int, int>();
-
-
-        static async Task<string> getData(string url)
-        {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(url);
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-            return responseBody;
-        }
-
-        static void parseQuizzData(string data)
-        {
-            JObject jobject = (JObject)JsonConvert.DeserializeObject(data);
-            foreach (JObject result in jobject["results"])
-            {
-
-                List<Resposta> ListaRespostas = new List<Resposta>();
-
-                // get correct answer
-                ListaRespostas.Add(new Resposta((string)result["correct_answer"], true));
-
-                // get remaining answers
-                foreach (string wrongAnswer in result["incorrect_answers"])
-                {
-                    ListaRespostas.Add(new Resposta(wrongAnswer, false));
-                }
-
-                // instantiate question ( with answers )
-                Questao questao = new Questao((string)result["question"], 4, ListaRespostas);
-
-                Questoes.Add(questao);
-            }
-        }
-        private async void Button_Click(object sender, RoutedEventArgs e)
-        {
-            string result = await getData( BaseUrl );
-            parseQuizzData( result );
-            /*OptionMenu oP = new OptionMenu();
-            this.NavigationService.Navigate(oP);*/
-            Jogo pageGame = new Jogo();
-            this.NavigationService.Navigate(pageGame);
+            OptionMenu oP = new OptionMenu();
+            this.NavigationService.Navigate(oP);
         }
     }
 }

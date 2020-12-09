@@ -43,3 +43,5 @@ C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\Qui
 C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\QuizAppWPF.csproj.CopyComplete
 C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\QuizAppWPF.exe
 C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\QuizAppWPF.pdb
+C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\EscolherCategoria.g.cs
+C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\EscolherCategoria.baml
