@@ -1,0 +1,18 @@
+﻿<Page x:Class="QuizAppWPF.EscolherNumeroPerguntas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuizAppWPF"
+        mc:Ignorable="d"
+        Title="EscolherDificuldade" Height="450" Width="800">
+    <Grid>
+        <Button Name="N5" Click="NumeroPerguntasEscolhida" Content="5" HorizontalAlignment="Left" Margin="165,49,0,0" VerticalAlignment="Top" Width="163" Height="57"/>
+        <Button Name="N10" Click="NumeroPerguntasEscolhida" Content="10" HorizontalAlignment="Left" Margin="476,49,0,0" VerticalAlignment="Top" Width="162" Height="57"/>
+        <Button Name="N20" Click="NumeroPerguntasEscolhida" Content="20" HorizontalAlignment="Left" Margin="476,148,0,0" VerticalAlignment="Top" Width="162" Height="57"/>
+        <Label HorizontalAlignment="Left" Margin="100,226,0,0" VerticalAlignment="Top" Width="455">
+            <Label Content="Label" Name="logUrl" Height="62" Width="599"/>
+        </Label>
+
+    </Grid>
+</Page>

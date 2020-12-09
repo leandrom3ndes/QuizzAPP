@@ -45,3 +45,7 @@ C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\Qui
 C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\QuizAppWPF.pdb
 C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\EscolherCategoria.g.cs
 C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\EscolherCategoria.baml
+C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\EscolherDificuldade.g.cs
+C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\EscolherDificuldade.baml
+C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\EscolherNumeroPerguntas.g.cs
+C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\EscolherNumeroPerguntas.baml

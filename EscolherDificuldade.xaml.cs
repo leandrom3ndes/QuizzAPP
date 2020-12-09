@@ -24,21 +24,24 @@ namespace QuizAppWPF
     /// <summary>
     /// Interaction logic for EscolherCategoria.xaml
     /// </summary>
-    public partial class EscolherCategoria : Page
+    public partial class EscolherDificuldade : Page
     {
-        public EscolherCategoria()
+        public string idCategoria { get; set; }
+        public EscolherDificuldade(string idCategoria)
         {
+            this.idCategoria = idCategoria;
             InitializeComponent();
         }
 
-        private void CategoriaEscolhida(object sender, RoutedEventArgs e)
+        
+        private async void DificuldadeEscolhida(object sender, RoutedEventArgs e)
         {
             Button senderButton = sender as Button;
 
-            string idCategoria = senderButton.Name.Remove(0, 2);
+            string dificuldade = senderButton.Name;
 
-            EscolherDificuldade pageDificuldade = new EscolherDificuldade( idCategoria );
-            this.NavigationService.Navigate( pageDificuldade );
+            EscolherNumeroPerguntas pageNumeroPerguntas = new EscolherNumeroPerguntas( idCategoria, dificuldade);
+            this.NavigationService.Navigate( pageNumeroPerguntas );
 
         }
     }
