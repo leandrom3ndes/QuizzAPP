@@ -28,6 +28,8 @@ namespace QuizAppWPF
     {
         private string idCategoria { get; set; }
         private string dificuldade { get; set; }
+
+        private int numeroQuestao = 0;
         public EscolherNumeroPerguntas(string idCategoria, string dificuldade)
         {
             this.idCategoria = idCategoria;
@@ -92,13 +94,16 @@ namespace QuizAppWPF
                     ListaRespostas.Add(new Resposta(wrongAnswer, false));
                 }
 
+                ListaRespostas = ListaRespostas.OrderBy(x => Guid.NewGuid()).ToList();
+
                 // instantiate question ( with answers )
                 Questao questao = new Questao((string)result["question"], 4, ListaRespostas);
 
                 Questoes.Add(questao);
             }
-        }
 
+            Questoes = Questoes.OrderBy(x => Guid.NewGuid()).ToList();
+        }
 
         private async void NumeroPerguntasEscolhida(object sender, RoutedEventArgs e)
         {
@@ -117,23 +122,16 @@ namespace QuizAppWPF
                 url = url + "&difficulty=" + dificuldade;
             }
 
-            logUrl.Content = url;
+            log_Url.Content = url;
 
             string result = await getData(url);
 
+            log_Url.Content = result;
             JObject jobject = (JObject)JsonConvert.DeserializeObject( result );
+            
+            parseQuizzData(result);
 
-            if ( ( int ) jobject["response_code"] != 0 )
-            {
-                logUrl.Content = "Não disponível! Escolha outras opções!";
-            }
-            else
-            {
-                logUrl.Content = "Continuar jogo!";
-            }
-            // parseQuizzData(result);
 
         }
-
     }
 }

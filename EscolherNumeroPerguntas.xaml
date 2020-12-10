@@ -11,8 +11,7 @@
         <Button Name="N10" Click="NumeroPerguntasEscolhida" Content="10" HorizontalAlignment="Left" Margin="476,49,0,0" VerticalAlignment="Top" Width="162" Height="57"/>
         <Button Name="N20" Click="NumeroPerguntasEscolhida" Content="20" HorizontalAlignment="Left" Margin="476,148,0,0" VerticalAlignment="Top" Width="162" Height="57"/>
         <Label HorizontalAlignment="Left" Margin="100,226,0,0" VerticalAlignment="Top" Width="455">
-            <Label Content="Label" Name="logUrl" Height="62" Width="599"/>
+            <Label Content="Label" Name="log_Url" Height="62" Width="599"/>
         </Label>
-
     </Grid>
 </Page>
