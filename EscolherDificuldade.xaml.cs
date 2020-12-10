@@ -34,7 +34,7 @@ namespace QuizAppWPF
         }
 
         
-        private async void DificuldadeEscolhida(object sender, RoutedEventArgs e)
+        private void DificuldadeEscolhida(object sender, RoutedEventArgs e)
         {
             Button senderButton = sender as Button;
 

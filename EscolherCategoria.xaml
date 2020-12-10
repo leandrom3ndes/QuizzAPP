@@ -7,12 +7,13 @@
         mc:Ignorable="d"
         Title="EscolherCategoria" Height="450" Width="800">
     <Grid>
-        <Button Name="ID19" Click="CategoriaEscolhida" Content="Matematica" HorizontalAlignment="Left" Margin="165,49,0,0" VerticalAlignment="Top" Width="163" Height="57"/>
-        <Button Name="ID30" Click="CategoriaEscolhida" Content="Ciencias" HorizontalAlignment="Left" Margin="476,49,0,0" VerticalAlignment="Top" Width="162" Height="57"/>
-        <Button Name="ID21" Click="CategoriaEscolhida" Content="Desporto" HorizontalAlignment="Left" Margin="476,148,0,0" VerticalAlignment="Top" Width="162" Height="57"/>
-        <Button Name="ID18" Click="CategoriaEscolhida" Content="Informática" HorizontalAlignment="Left" Margin="165,264,0,0" VerticalAlignment="Top" Width="162" Height="56"/>
-        <Button Name="ID23" Click="CategoriaEscolhida" Content="História" HorizontalAlignment="Left" Margin="166,148,0,0" VerticalAlignment="Top" Width="162" Height="57"/>
-        <Button Name="ID25" Click="CategoriaEscolhida" Content="Arte" HorizontalAlignment="Left" Margin="476,264,0,0" VerticalAlignment="Top" Width="162" Height="57"/>
-
+        <Image Source="neonWall.jpg" Stretch="Fill" Grid.ColumnSpan="2" Margin="0,0,0,-0.4"/>
+        <Label Content="Escolha a categoria" Name="info" HorizontalAlignment="Center" Margin="197,0,-167,0" VerticalAlignment="Top" Width="770" Height="72" Foreground="#FFC20707" FontSize="48" FontWeight="Bold"/>
+        <Button Name="ID19" Click="CategoriaEscolhida" Content="Matematica" HorizontalAlignment="Left" Margin="141,97,0,0" VerticalAlignment="Top" Width="163" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
+        <Button Name="ID30" Click="CategoriaEscolhida" Content="Ciencias" HorizontalAlignment="Left" Margin="388,97,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
+        <Button Name="ID21" Click="CategoriaEscolhida" Content="Desporto" HorizontalAlignment="Left" Margin="388,195,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
+        <Button Name="ID18" Click="CategoriaEscolhida" Content="Informática" HorizontalAlignment="Left" Margin="141,288,0,0" VerticalAlignment="Top" Width="162" Height="56" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
+        <Button Name="ID23" Click="CategoriaEscolhida" Content="História" HorizontalAlignment="Left" Margin="141,195,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
+        <Button Name="ID25" Click="CategoriaEscolhida" Content="Arte" HorizontalAlignment="Left" Margin="388,288,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
     </Grid>
 </Page>
