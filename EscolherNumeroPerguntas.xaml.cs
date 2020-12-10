@@ -59,12 +59,11 @@ namespace QuizAppWPF
             }
         }
 
-        static int pontuacao = 0;
+        //static int pontuacao = 0;
 
         static List<Questao> Questoes = new List<Questao>();
 
         private static string BaseUrl = "https://opentdb.com/api.php?amount=REPLACENUMBER&category=REPLACE_CATEGORY";
-
 
         static async Task<string> getData(string url)
         {
@@ -129,7 +128,9 @@ namespace QuizAppWPF
             }
             else
             {
-                logUrl.Content = "Continuar jogo!";
+                logsuscesso.Content = "Continuar jogo!";
+                logUrl.Content = url;
+
             }
             // parseQuizzData(result);
 
