@@ -25,6 +25,12 @@ namespace QuizAppWPF
         {
             if (user1 == null || user2 == null) { return false; }
 
+            if (user1.nomeUtilizador == user2.nomeUtilizador)
+            {
+                error = "Nome de utilizador já existe";
+                return true;
+            }
+
             if (user1.nomeUtilizador != user2.nomeUtilizador)
             {
                 error = "Nome de utilizador incorreto!";
@@ -36,13 +42,6 @@ namespace QuizAppWPF
                 error = "Palavra passe incorreta!";
                 return false;
             }
-
-            else if (user1.nomeUtilizador == user2.nomeUtilizador)
-            {
-                error = "Nome de utilizador já existe";
-                return true;
-            }
-
             return true;
         }
         /*public static bool IsEqualName(Utilizador user1, Utilizador user2)
