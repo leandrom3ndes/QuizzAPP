@@ -1,7 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,12 +18,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Collections;
-using System.Text.RegularExpressions;
 
 namespace QuizAppWPF
 {
@@ -33,15 +33,15 @@ namespace QuizAppWPF
             InitializeComponent();
         }
 
-        
+
         private void DificuldadeEscolhida(object sender, RoutedEventArgs e)
         {
             Button senderButton = sender as Button;
 
             string dificuldade = senderButton.Name;
 
-            EscolherNumeroPerguntas pageNumeroPerguntas = new EscolherNumeroPerguntas( idCategoria, dificuldade);
-            this.NavigationService.Navigate( pageNumeroPerguntas );
+            EscolherNumeroPerguntas pageNumeroPerguntas = new EscolherNumeroPerguntas(idCategoria, dificuldade);
+            this.NavigationService.Navigate(pageNumeroPerguntas);
 
         }
     }

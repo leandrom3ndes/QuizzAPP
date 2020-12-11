@@ -1,7 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,12 +18,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Collections;
-using System.Text.RegularExpressions;
 
 namespace QuizAppWPF
 {
@@ -28,6 +28,8 @@ namespace QuizAppWPF
     {
         private string idCategoria { get; set; }
         private string dificuldade { get; set; }
+
+        private int numeroQuestao = 0;
         public EscolherNumeroPerguntas(string idCategoria, string dificuldade)
         {
             this.idCategoria = idCategoria;
@@ -91,13 +93,16 @@ namespace QuizAppWPF
                     ListaRespostas.Add(new Resposta(wrongAnswer, false));
                 }
 
+                ListaRespostas = ListaRespostas.OrderBy(x => Guid.NewGuid()).ToList();
+
                 // instantiate question ( with answers )
                 Questao questao = new Questao((string)result["question"], 4, ListaRespostas);
 
                 Questoes.Add(questao);
             }
-        }
 
+            Questoes = Questoes.OrderBy(x => Guid.NewGuid()).ToList();
+        }
 
         private async void NumeroPerguntasEscolhida(object sender, RoutedEventArgs e)
         {
@@ -120,21 +125,12 @@ namespace QuizAppWPF
 
             string result = await getData(url);
 
-            JObject jobject = (JObject)JsonConvert.DeserializeObject( result );
+            logUrl.Content = result;
+            JObject jobject = (JObject)JsonConvert.DeserializeObject(result);
 
-            if ( ( int ) jobject["response_code"] != 0 )
-            {
-                logUrl.Content = "Não disponível! Escolha outras opções!";
-            }
-            else
-            {
-                logsuscesso.Content = "Continuar jogo!";
-                logUrl.Content = url;
+            parseQuizzData(result);
 
-            }
-            // parseQuizzData(result);
 
         }
-
     }
 }
