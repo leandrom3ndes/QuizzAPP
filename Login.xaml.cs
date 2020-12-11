@@ -34,6 +34,7 @@ namespace QuizAppWPF
     {
         public Login()
         {
+            //await LoginBtn_Click_1(object sender, RoutedEventArgs e);
             InitializeComponent();
         }
 
@@ -44,8 +45,10 @@ namespace QuizAppWPF
         };
 
         IFirebaseClient client;
+            
 
-        private async void LoginBtnClick(object sender, RoutedEventArgs e)
+
+        private async void LoginBtn_Click_1(object sender, RoutedEventArgs e)
         {
             string objname = ((Button)sender).Name;
             switch (objname)
@@ -59,9 +62,8 @@ namespace QuizAppWPF
 
             }
             #region Condition
-
+            
         }
-
         private void Registo()
         {
             Registo registo = new Registo();
@@ -111,7 +113,18 @@ namespace QuizAppWPF
                 Utilizador.ShowError();
             }
 
-        }  
-    }
+        }
 
+
+
+
+        /*private void RegBtn_Click(object sender, EventArgs e)
+        {
+            RegistrationForm reg = new RegistrationForm();
+            reg.ShowDialog();
+        }*/
+
+
+
+    }
 }

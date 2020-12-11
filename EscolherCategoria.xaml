@@ -8,19 +8,12 @@
         Title="EscolherCategoria" Height="450" Width="800">
     <Grid>
         <Image Source="neonWall.jpg" Stretch="Fill" Grid.ColumnSpan="2" Margin="0,0,0,-0.4"/>
-        <Label Content="Escolha a disciplina" Name="info" HorizontalAlignment="Left" Margin="143,-15,-167,0" VerticalAlignment="Top" Width="824" Height="72" FontSize="48" FontWeight="Bold" RenderTransformOrigin="0.52,0.864" Grid.ColumnSpan="2" Background="{x:Null}" OpacityMask="White">
-            <Label.Foreground>
-                <LinearGradientBrush EndPoint="0.5,0.7" StartPoint="0.5,1.3">
-                    <GradientStop Color="White" Offset="0"/>
-                    <GradientStop Color="#FFEA3636" Offset="1"/>
-                </LinearGradientBrush>
-            </Label.Foreground>
-        </Label>
-        <Button Name="ID19" Click="CategoriaEscolhida" Content="Matemática" HorizontalAlignment="Left" Margin="141,97,0,0" VerticalAlignment="Top" Width="163" Height="57" FontSize="26" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
-        <Button Name="ID30" Click="CategoriaEscolhida" Content="Ciências" HorizontalAlignment="Left" Margin="388,97,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="26" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
-        <Button Name="ID21" Click="CategoriaEscolhida" Content="Desporto" HorizontalAlignment="Left" Margin="388,195,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="26" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
-        <Button Name="ID18" Click="CategoriaEscolhida" Content="Informática" HorizontalAlignment="Left" Margin="141,288,0,0" VerticalAlignment="Top" Width="162" Height="56" FontSize="26" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
-        <Button Name="ID23" Click="CategoriaEscolhida" Content="História" HorizontalAlignment="Left" Margin="141,195,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="26" FontWeight="Bold" Foreground="#FFFAF6F6" Background="{x:Null}" BorderBrush="#FFF30A0A" />
-        <Button Name="ID25" Click="CategoriaEscolhida" Content="Arte" HorizontalAlignment="Left" Margin="388,288,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="26" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
+        <Label Content="Escolha a categoria" Name="info" HorizontalAlignment="Center" Margin="197,0,-167,0" VerticalAlignment="Top" Width="770" Height="72" Foreground="#FFC20707" FontSize="48" FontWeight="Bold"/>
+        <Button Name="ID19" Click="CategoriaEscolhida" Content="Matematica" HorizontalAlignment="Left" Margin="141,97,0,0" VerticalAlignment="Top" Width="163" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
+        <Button Name="ID30" Click="CategoriaEscolhida" Content="Ciencias" HorizontalAlignment="Left" Margin="388,97,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
+        <Button Name="ID21" Click="CategoriaEscolhida" Content="Desporto" HorizontalAlignment="Left" Margin="388,195,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
+        <Button Name="ID18" Click="CategoriaEscolhida" Content="Informática" HorizontalAlignment="Left" Margin="141,288,0,0" VerticalAlignment="Top" Width="162" Height="56" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
+        <Button Name="ID23" Click="CategoriaEscolhida" Content="História" HorizontalAlignment="Left" Margin="141,195,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
+        <Button Name="ID25" Click="CategoriaEscolhida" Content="Arte" HorizontalAlignment="Left" Margin="388,288,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
     </Grid>
 </Page>

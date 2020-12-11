@@ -20,9 +20,9 @@
                 </LinearGradientBrush>
             </Label.Foreground>
         </Label>
-        <Button Name="easy" Click="DificuldadeEscolhida" Content="Fácil" HorizontalAlignment="Left" Margin="143,0,0,266.6" VerticalAlignment="Bottom" Width="163" Height="57" FontSize="26" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
-        <Button Name="medium" Click="DificuldadeEscolhida" Content="Médio" HorizontalAlignment="Left" Margin="5,126,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="26" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A" Grid.Column="1"/>
-        <Button Name="hard" Click="DificuldadeEscolhida" Content="Difícil" HorizontalAlignment="Left" Margin="5,256,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="26" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A" Grid.Column="1"/>
-        <Button Name="random" Click="DificuldadeEscolhida" Content="Aleatório" HorizontalAlignment="Left" Margin="143,256,0,0" VerticalAlignment="Top" Width="162" Height="56" FontSize="26" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
+        <Button Name="easy" Click="DificuldadeEscolhida" Content="Fácil" HorizontalAlignment="Left" Margin="143,0,0,266.6" VerticalAlignment="Bottom" Width="163" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
+        <Button Name="medium" Click="DificuldadeEscolhida" Content="Médio" HorizontalAlignment="Left" Margin="5,126,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A" Grid.Column="1"/>
+        <Button Name="hard" Click="DificuldadeEscolhida" Content="Difícil" HorizontalAlignment="Left" Margin="5,256,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A" Grid.Column="1"/>
+        <Button Name="random" Click="DificuldadeEscolhida" Content="Aleatório" HorizontalAlignment="Left" Margin="143,256,0,0" VerticalAlignment="Top" Width="162" Height="56" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
     </Grid>
 </Page>

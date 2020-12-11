@@ -37,7 +37,7 @@ namespace QuizAppWPF
 
         IFirebaseClient client;
 
-        private async void RegBtnClick(object sender, RoutedEventArgs e)
+        private async void RegBtn_Click_1(object sender, RoutedEventArgs e)
         {
             string objname = ((Button)sender).Name;
             switch (objname)
