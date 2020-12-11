@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace QuizAppWPF
 {
@@ -18,7 +19,7 @@ namespace QuizAppWPF
 
         public static void ShowError()
         {
-            System.Windows.Forms.MessageBox.Show(error);
+            MessageBox.Show(error);
         }
 
         public static bool IsEqual(Utilizador user1, Utilizador user2)

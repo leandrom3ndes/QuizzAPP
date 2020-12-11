@@ -45,25 +45,130 @@ C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\Qui
 C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\QuizAppWPF.pdb
 C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\EscolherCategoria.g.cs
 C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\EscolherCategoria.baml
+C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\EscolherDificuldade.g.cs
+C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\EscolherDificuldade.baml
+C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\EscolherNumeroPerguntas.g.cs
+C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\EscolherNumeroPerguntas.baml
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\bin\Debug\QuizAppWPF.exe.config
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\bin\Debug\QuizAppWPF.exe
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\bin\Debug\QuizAppWPF.pdb
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\bin\Debug\FireSharp.dll
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.dll
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\bin\Debug\Newtonsoft.Json.dll
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\bin\Debug\System.Net.Http.Extensions.dll
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\bin\Debug\System.Net.Http.Primitives.dll
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.xml
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\bin\Debug\Newtonsoft.Json.xml
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\bin\Debug\System.Net.Http.Extensions.xml
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\bin\Debug\System.Net.Http.Primitives.xml
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\QuizAppWPF.csprojAssemblyReference.cache
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\EscolherCategoria.g.cs
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\EscolherDificuldade.g.cs
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\EscolherNumeroPerguntas.g.cs
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\Jogo.g.cs
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\Login.g.cs
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\MainWindow.g.cs
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\OptionMenu.g.cs
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\App.g.cs
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\QuizAppWPF_MarkupCompile.cache
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\QuizAppWPF_MarkupCompile.lref
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\EscolherCategoria.baml
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\EscolherDificuldade.baml
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\EscolherNumeroPerguntas.baml
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\Jogo.baml
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\Login.baml
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\MainWindow.baml
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\OptionMenu.baml
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\QuizAppWPF.g.resources
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\QuizAppWPF.Properties.Resources.resources
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\QuizAppWPF.csproj.GenerateResource.cache
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\QuizAppWPF.csproj.CoreCompileInputs.cache
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\QuizAppWPF.csproj.CopyComplete
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\QuizAppWPF.exe
+C:\Users\franc\source\repos\leandrom3ndes\QuizzAPP\obj\Debug\QuizAppWPF.pdb
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\bin\Debug\QuizAppWPF.exe.config
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\bin\Debug\QuizAppWPF.exe
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\bin\Debug\QuizAppWPF.pdb
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\bin\Debug\FireSharp.dll
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.dll
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\bin\Debug\Newtonsoft.Json.dll
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\bin\Debug\System.Net.Http.Extensions.dll
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\bin\Debug\System.Net.Http.Primitives.dll
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.xml
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\bin\Debug\Newtonsoft.Json.xml
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\bin\Debug\System.Net.Http.Extensions.xml
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\bin\Debug\System.Net.Http.Primitives.xml
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\QuizAppWPF.csprojAssemblyReference.cache
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\EscolherCategoria.g.cs
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\EscolherDificuldade.g.cs
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\EscolherNumeroPerguntas.g.cs
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\Jogo.g.cs
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\Login.g.cs
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\MainWindow.g.cs
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\OptionMenu.g.cs
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\App.g.cs
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\QuizAppWPF_MarkupCompile.cache
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\QuizAppWPF_MarkupCompile.lref
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\EscolherCategoria.baml
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\EscolherDificuldade.baml
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\EscolherNumeroPerguntas.baml
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\Jogo.baml
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\Login.baml
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\MainWindow.baml
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\OptionMenu.baml
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\QuizAppWPF.g.resources
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\QuizAppWPF.Properties.Resources.resources
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\QuizAppWPF.csproj.GenerateResource.cache
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\QuizAppWPF.csproj.CoreCompileInputs.cache
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\QuizAppWPF.csproj.CopyComplete
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\QuizAppWPF.exe
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\QuizAppWPF.pdb
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\Registo.g.cs
+C:\Users\joaol\OneDrive\Ambiente de Trabalho\QuizzAPP\obj\Debug\Registo.baml
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\QuizAppWPF.exe.config
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\QuizAppWPF.exe
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\QuizAppWPF.pdb
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\FireSharp.dll
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.dll
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\Newtonsoft.Json.dll
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\System.Net.Http.Extensions.dll
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\System.Net.Http.Primitives.dll
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.xml
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\Newtonsoft.Json.xml
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\System.Net.Http.Extensions.xml
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\System.Net.Http.Primitives.xml
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\QuizAppWPF.csprojAssemblyReference.cache
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\EscolherCategoria.g.cs
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\EscolherDificuldade.g.cs
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\EscolherNumeroPerguntas.g.cs
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\Jogo.g.cs
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\Login.g.cs
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\MainWindow.g.cs
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\OptionMenu.g.cs
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\Registo.g.cs
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\App.g.cs
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\QuizAppWPF_MarkupCompile.cache
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\QuizAppWPF_MarkupCompile.lref
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\EscolherCategoria.baml
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\EscolherDificuldade.baml
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\EscolherNumeroPerguntas.baml
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\Jogo.baml
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\Login.baml
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\MainWindow.baml
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\OptionMenu.baml
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\Registo.baml
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\QuizAppWPF.g.resources
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\QuizAppWPF.Properties.Resources.resources
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\QuizAppWPF.csproj.GenerateResource.cache
@@ -71,17 +176,3 @@ C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\QuizAppWPF.csproj.C
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\QuizAppWPF.csproj.CopyComplete
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\QuizAppWPF.exe
 C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\QuizAppWPF.pdb
-C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\QuizAppWPF.csproj.App.config
-C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\Registo.g.cs
-C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\FireSharp.dll
-C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.dll
-C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
-C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
-C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\System.Net.Http.Extensions.dll
-C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\System.Net.Http.Primitives.dll
-C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.xml
-C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
-C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
-C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\System.Net.Http.Extensions.xml
-C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\bin\Debug\System.Net.Http.Primitives.xml
-C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\Registo.baml
