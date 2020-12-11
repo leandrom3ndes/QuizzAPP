@@ -46,8 +46,6 @@ namespace QuizAppWPF
 
         IFirebaseClient client;
             
-
-
         private async void LoginBtnClick(object sender, RoutedEventArgs e)
         {
             string objname = ((Button)sender).Name;

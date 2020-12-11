@@ -88,7 +88,7 @@ namespace QuizAppWPF
                 Password = passTbox.Password
             };
 
-            if (Utilizador.IsEqualName(ResUser, user))
+            if (Utilizador.IsEqual(ResUser, user))
             {
                 MessageBox.Show("O utilizador já existe! Escolha outro nome.");
             }

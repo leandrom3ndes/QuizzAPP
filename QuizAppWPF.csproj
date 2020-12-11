@@ -108,13 +108,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="EscolherDificuldade.xaml.cs">
       <DependentUpon>EscolherDificuldade.xaml</DependentUpon>
     </Compile>
     <Compile Include="EscolherNumeroPerguntas.xaml.cs">
       <DependentUpon>EscolherNumeroPerguntas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MetodosGlobais.cs" />
     <Compile Include="Registo.xaml.cs">
       <DependentUpon>Registo.xaml</DependentUpon>
     </Compile>
