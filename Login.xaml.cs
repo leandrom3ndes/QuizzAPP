@@ -48,7 +48,7 @@ namespace QuizAppWPF
             
 
 
-        private async void LoginBtn_Click_1(object sender, RoutedEventArgs e)
+        private async void LoginBtnClick(object sender, RoutedEventArgs e)
         {
             string objname = ((Button)sender).Name;
             switch (objname)
@@ -90,8 +90,6 @@ namespace QuizAppWPF
             }
             #endregion
 
-
-
             FirebaseResponse res = client.Get(@"Utilizadores/" + UsernameTbox.Text);
             Utilizador ResUser = res.ResultAs<Utilizador>();    // Resultado da base de dados
 
@@ -114,17 +112,7 @@ namespace QuizAppWPF
             }
 
         }
-
-
-
-
-        /*private void RegBtn_Click(object sender, EventArgs e)
-        {
-            RegistrationForm reg = new RegistrationForm();
-            reg.ShowDialog();
-        }*/
-
-
-
+    
     }
+
 }

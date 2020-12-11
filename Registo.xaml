@@ -4,11 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizAppWPF"
-      mc:Ignorable="d" 
-      d:DesignHeight="450"
-      Title="Registo" Width="300.4">
+      mc:Ignorable="d"
+      Title="Registo" Width="712.468" Height="448.935">
 
-    <Grid Opacity="0.985" Background="#FF1F1D1D" Margin="0,0,0.4,-0.4">
+    <Grid Opacity="0.985" Background="#FF1F1D1D">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -17,30 +16,31 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="113*" />
+            <RowDefinition Height="74*" />
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="113*" />
+            <RowDefinition Height="111*" />
         </Grid.RowDefinitions>
 
-        <Image Source="quizTime.jpg" Stretch="Fill" Grid.ColumnSpan="5" Grid.RowSpan="4" Margin="0,0,0.36,-0.4"/>
+        <Image Source="quizTime.jpg" Stretch="Fill" Grid.ColumnSpan="5" Grid.RowSpan="5" Margin="-65,0,-42,0"/>
 
-        <TextBox Name="UsernameTbox" Grid.ColumnSpan="4" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="11,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
-        <ComboBox Name="TipoCbox"  Grid.ColumnSpan="4" Grid.Column="1" HorizontalAlignment="Left" Margin="14,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="167">
-            <ComboBoxItem Content="Universitario"/>
-            <ComboBoxItem Content="Nao Universitario"/>
+        <Label Content="Nome de utilizador" Grid.Column="1" HorizontalAlignment="Left" Margin="80,10,0,0" VerticalAlignment="Top" Width="247" Grid.ColumnSpan="3" FontSize="25" FontWeight="Bold" Background="#00000000" Foreground="#FFC9B5B5" Height="43"/>
+        <Label Content="Tipo de aluno" Grid.Column="1" HorizontalAlignment="Left" Margin="80,70,0,0" VerticalAlignment="Top" Width="183" Grid.ColumnSpan="2" FontSize="25" FontWeight="Bold" Background="#00000000" Foreground="#FFC9B5B5" Height="43"/>
+        <Label Content="Nome do curso" Grid.Column="1" HorizontalAlignment="Left" Margin="80,21,0,0" VerticalAlignment="Top" Width="194" Grid.ColumnSpan="2" FontSize="25" FontWeight="Bold" Background="#00000000" Foreground="#FFC9B5B5" Grid.Row="1" Height="43"/>
+        <Label Content="Palavra passe" Grid.Column="1" HorizontalAlignment="Left" Margin="87,36,0,0" VerticalAlignment="Top" Width="194" Grid.ColumnSpan="2" FontSize="25" FontWeight="Bold" Background="#00000000" Foreground="#FFC9B5B5" Grid.Row="3" Height="43"/>
+        <Label Content="Nº Aluno" Grid.Column="1" HorizontalAlignment="Left" Margin="80,1,0,0" VerticalAlignment="Top" Width="194" Grid.ColumnSpan="2" FontSize="25" FontWeight="Bold" Background="#00000000" Foreground="#FFC9B5B5" Grid.Row="2" Grid.RowSpan="2" Height="43"/>
+
+        <TextBox Name="UsernameTbox" Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Left" Height="17" Margin="87,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <ComboBox Name="TipoCbox" Grid.ColumnSpan="3" Grid.Column="1" Margin="87,0,119,51" Grid.Row="1">
+            <ComboBoxItem Content="Universitário"/>
+            <ComboBoxItem Content="Não Universitário"/>
         </ComboBox>
-        <TextBox Name="cursoTbox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="14,70,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" Grid.ColumnSpan="4"/>
-        <TextBox Name="nrAlunoTbox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="14,17.2,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" Grid.ColumnSpan="4"/>
-        <PasswordBox Name="passTbox" Grid.Column="1" HorizontalAlignment="Left" Margin="14,81.2,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="4" Width="167" Height="21"/>
+        <TextBox Name="cursoTbox" Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Left" Height="17" Margin="87,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Row="1" Grid.RowSpan="2"/>
+        <TextBox Name="nrAlunoTbox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="87,13,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.ColumnSpan="3" />
+        <PasswordBox Name="passTbox" Grid.Column="1" HorizontalAlignment="Left" Margin="87,84,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="222" Height="18"/>
 
-        <Label Content="Nome utilizador" Grid.Column="1" HorizontalAlignment="Left" Margin="10.6,30,0,0" VerticalAlignment="Top" Background="#00000000" Grid.ColumnSpan="3" Width="198" Foreground="#FFE52525" Height="27" FontWeight="Bold" FontSize="16"/>
-        <Label Content="Tipo" HorizontalAlignment="Left" Margin="24,90,0,0" VerticalAlignment="Top" Background="#00000000" Grid.ColumnSpan="3" Width="198" Foreground="#FFE52525" Height="27" FontWeight="Bold" FontSize="16" Grid.Column="1" Grid.RowSpan="2"/>
-        <Label Content="Nome Curso" HorizontalAlignment="Left" Margin="14,38,0,0" VerticalAlignment="Top" Background="#00000000" Grid.ColumnSpan="3" Width="198" Foreground="#FFE52525" Height="27" FontWeight="Bold" FontSize="16" Grid.Row="1" Grid.Column="1"/>
-        <Label Content="Nª Aluno" Grid.Column="1" HorizontalAlignment="Left" Margin="14,98,0,0" VerticalAlignment="Top" Background="#00000000" Grid.ColumnSpan="3" Width="198" Foreground="#FFE52525" Height="27" FontWeight="Bold" FontSize="16" Grid.Row="1" Grid.RowSpan="2"/>
-        <Label Content="Palavra Passe" HorizontalAlignment="Left" Margin="14,45.2,0,0" VerticalAlignment="Top" Background="#00000000" Grid.ColumnSpan="3" Width="198" Foreground="#FFE52525" Height="27" FontWeight="Bold" FontSize="16" Grid.Row="2" Grid.Column="1"/>
-        <Button Name="regBtn" Grid.ColumnSpan="3" Content="Registar" Grid.Column="1" HorizontalAlignment="Left" Margin="42,9.4,0,0" Grid.Row="3" VerticalAlignment="Top" Width="117" Click="RegBtn_Click_1"/>
-        
+        <Button Name="regBtn" Content="Registar" HorizontalAlignment="Left" Margin="69,0,0,0" VerticalAlignment="Top" Width="267" Height="60" BorderBrush="#FF16A6A0" FontSize="36" Click="RegBtnClick" Foreground="White" Background="{x:Null}" Grid.ColumnSpan="3" Grid.Row="4" Grid.Column="1"/>
 
     </Grid>
 </Page>
