@@ -92,6 +92,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Game.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Jogo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,6 +117,9 @@
     </Compile>
     <Compile Include="EscolherNumeroPerguntas.xaml.cs">
       <DependentUpon>EscolherNumeroPerguntas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Game.xaml.cs">
+      <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
     <Compile Include="GlobalMethods.cs" />
     <Compile Include="Registo.xaml.cs">
