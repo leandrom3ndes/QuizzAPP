@@ -6,6 +6,7 @@ namespace GlobalMethods
 {
     public static class GlobalMethods
     {
+        public static string BaseUrl = "https://opentdb.com/api.php?amount=REPLACENUMBER&category=REPLACE_CATEGORY";    
         public static async Task<string> getData( string url )
         {
             HttpClient client = new HttpClient();

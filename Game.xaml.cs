@@ -24,46 +24,26 @@ namespace QuizAppWPF
     /// </summary>
     public partial class Game : Page
     {
+        private int questionsNumber { get; set; }
+
+        public Game (int questionsNumber)
+        {
+            this.questionsNumber = questionsNumber;
+        }
         static int pontuacao = 0;
         static Random rand = new Random();//DateTime.Now.ToString().GetHashCode()
         int enunciadoQ = 0; //número da pergunta que o utilizador se encontra
         bool hasPressed = false;
-        int questionsNumber = 10; //este valor deve ser definido de acordo com o a escolha do utilizador, para teste coloquei 10
+      //  int questionsNumber = 10; //este valor deve ser definido de acordo com o a escolha do utilizador, para teste coloquei 10
         List<string> correctAnswerPositionList = new List<string>();
-        static List<Questao> Questoes = new List<Questao>();
-        List<string> positions = new List<string>() { "A", "B", "C", "D" };
-        class Resposta
-        {
-            public string value { get; set; }
-            public bool correctAnswer { get; set; }
-         //   public string answerPosition { get; set; }
-            public Resposta(string value, bool correctAnswer)
-            {
-                this.value = value;
-                this.correctAnswer = correctAnswer;
-           //     this.answerPosition = answerPosition;
-            }
 
-        }
-        class Questao
-        {
-            public string value { get; set; }
-            public int pontuacao { get; set; }
-            public string type { get; set; }
-            public List<Resposta> Respostas { get; set; }
-            public Questao(string value, int pontuacao, List<Resposta> Respostas, string type)
-            {
-                this.value = value;
-                this.pontuacao = pontuacao;
-                this.Respostas = Respostas;
-                this.type = type;
-            }
-        }
+        List<string> positions = new List<string>() { "A", "B", "C", "D" };
+
         public Game()
         {
             InitializeComponent();
         }
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             string objname = ((Button)sender).Name;
             switch (objname)
@@ -136,7 +116,7 @@ namespace QuizAppWPF
                     Next.Visibility = Visibility.Hidden;
                     break;
                 case "Start":
-                    await getData();
+                 //   await getData();
                     CreateRandomSequence();
                     Start.Visibility = Visibility.Hidden;
                     ShowQuestion();
@@ -148,49 +128,8 @@ namespace QuizAppWPF
                     break;
             }
         }
-        static async Task getData()
-        {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("https://opentdb.com/api.php?amount=10&category=21");
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-            parseData(responseBody);
-        }
+   
 
-        static void parseData(string data)
-        {
-            //string path = "C:/Users/lenovo/source/repos/QuizAppMethodsTest/TriviaTest.json"; //apenas para teste
-            //var data1 = File.ReadAllText(path); //apenas para teste
-            JObject jobject = (JObject)JsonConvert.DeserializeObject(data); 
-            foreach (JObject result in jobject["results"])
-            {
-                List<Resposta> ListaRespostas = new List<Resposta>();
-                // get correct answer
-                ListaRespostas.Add(new Resposta((string)result["correct_answer"], true));
-                // get remaining answers
-                foreach (string wrongAnswer in result["incorrect_answers"])
-                {
-                    ListaRespostas.Add(new Resposta(wrongAnswer, false));
-                }
-                // instantiate question ( with answers )
-                int difficulty = 0;
-                switch ((string)result["difficulty"])
-                {
-                    case "easy":
-                        difficulty = 1;
-                        break;
-                    case "medium":
-                        difficulty = 2;
-                        break;
-                    case "hard":
-                        difficulty = 4;
-                        break;
-
-                }
-                Questao questao = new Questao((string)result["question"], difficulty, ListaRespostas, (string)result["type"]);
-                Questoes.Add(questao);
-            }
-        }
 
         private void CreateRandomSequence()
         {
@@ -203,14 +142,14 @@ namespace QuizAppWPF
 
         private void ShowQuestion()
         {
-            Question.Content = Questoes[enunciadoQ].value;
-            if(Questoes[enunciadoQ].type == "boolean")
+            Question.Content = Enunciado.Questoes[enunciadoQ].value;
+            if(Enunciado.Questoes[enunciadoQ].type == "boolean")
             {
                 // ShowAnswer();
                 ShowBooleanAnswer();
                 //MessageBox.Show("Chaves é bolha");
             }
-            else if (Questoes[enunciadoQ].type == "multiple")
+            else if (Enunciado.Questoes[enunciadoQ].type == "multiple")
             {
                 if (C.IsVisible == false)
                 {
@@ -234,9 +173,9 @@ namespace QuizAppWPF
             B.Content = "False";
             for (int i = 0; i < 1; i++)
             {
-                if(Questoes[enunciadoQ].Respostas[i].correctAnswer == true)
+                if(Enunciado.Questoes[enunciadoQ].Respostas[i].correctAnswer == true)
                 {
-                    if (Questoes[enunciadoQ].Respostas[i].value== "True") //se a resposta correta for true, afirmo que o botão A possui a resposta correta
+                    if (Enunciado.Questoes[enunciadoQ].Respostas[i].value== "True") //se a resposta correta for true, afirmo que o botão A possui a resposta correta
                     {
                         correctAnswerPositionList[enunciadoQ] = "A";
                     }
@@ -254,7 +193,7 @@ namespace QuizAppWPF
             string correctPosition = correctAnswerPositionList[enunciadoQ]; //para teste, este valor deverá ser atribuído randomicamente
             List<string> Incorretpositions = positions.ToList();
             Incorretpositions.Remove(correctPosition); //lista das resposta incorretas
-            foreach ( Resposta resposta in Questoes[enunciadoQ].Respostas) //percorre as respoostas da questão atual
+            foreach ( Resposta resposta in Enunciado.Questoes[enunciadoQ].Respostas) //percorre as respoostas da questão atual
             {
                 if (resposta.correctAnswer == true) //mostrar resposta correta
                 {
@@ -317,7 +256,7 @@ namespace QuizAppWPF
                     }
                     else //atribuir pontuação
                     {
-                        pontuacao = pontuacao + Questoes[enunciadoQ].pontuacao;
+                        pontuacao = pontuacao + Enunciado.Questoes[enunciadoQ].pontuacao;
                     }
                     break;
                 case "B":
@@ -328,7 +267,7 @@ namespace QuizAppWPF
                     }
                     else //atribuir pontuação
                     {
-                        pontuacao = pontuacao + Questoes[enunciadoQ].pontuacao;
+                        pontuacao = pontuacao + Enunciado.Questoes[enunciadoQ].pontuacao;
                     }
                     break;
                 case "C":
@@ -339,7 +278,7 @@ namespace QuizAppWPF
                     }
                     else //atribuir pontuação
                     {
-                        pontuacao = pontuacao + Questoes[enunciadoQ].pontuacao;
+                        pontuacao = pontuacao + Enunciado.Questoes[enunciadoQ].pontuacao;
                     }
                     break;
                 case "D":
@@ -350,7 +289,7 @@ namespace QuizAppWPF
                     }
                     else //atribuir pontuação
                     {
-                        pontuacao = pontuacao + Questoes[enunciadoQ].pontuacao;
+                        pontuacao = pontuacao + Enunciado.Questoes[enunciadoQ].pontuacao;
                     }
                     break;
             }
