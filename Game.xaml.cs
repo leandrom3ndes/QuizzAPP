@@ -25,22 +25,17 @@ namespace QuizAppWPF
     public partial class Game : Page
     {
         private int questionsNumber { get; set; }
-
-        public Game (int questionsNumber)
-        {
-            this.questionsNumber = questionsNumber;
-        }
-        static int pontuacao = 0;
+        int pontuacao = 0;
         static Random rand = new Random();//DateTime.Now.ToString().GetHashCode()
         int enunciadoQ = 0; //número da pergunta que o utilizador se encontra
         bool hasPressed = false;
-      //  int questionsNumber = 10; //este valor deve ser definido de acordo com o a escolha do utilizador, para teste coloquei 10
-        List<string> correctAnswerPositionList = new List<string>();
+        public static List<string> correctAnswerPositionList = new List<string>();
 
         List<string> positions = new List<string>() { "A", "B", "C", "D" };
 
-        public Game()
+        public Game(int questionsNumber)
         {
+            this.questionsNumber = questionsNumber;
             InitializeComponent();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -106,12 +101,13 @@ namespace QuizAppWPF
                         B.ClearValue(Button.BackgroundProperty);
                         C.ClearValue(Button.BackgroundProperty);
                         D.ClearValue(Button.BackgroundProperty);
-                      //  Enable_DisableButtons(true);
                         ShowQuestion();
                     }
                     else
                     {
                         MessageBox.Show("Acabou palhaço");
+                        PontuacaoGame pontGame = new PontuacaoGame(Enunciado.pontuacaoMax, pontuacao);
+                        this.NavigationService.Navigate(pontGame);
                     }
                     Next.Visibility = Visibility.Hidden;
                     break;
@@ -122,8 +118,6 @@ namespace QuizAppWPF
                     ShowQuestion();
                     A.Visibility = Visibility.Visible;
                     B.Visibility = Visibility.Visible;
-                    C.Visibility = Visibility.Visible;
-                    D.Visibility = Visibility.Visible;
                     Question.Visibility = Visibility.Visible;
                     break;
             }

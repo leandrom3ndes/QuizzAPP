@@ -123,6 +123,9 @@
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
     <Compile Include="GlobalMethods.cs" />
+    <Compile Include="PontuacaoGame.xaml.cs">
+      <DependentUpon>PontuacaoGame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Registo.xaml.cs">
       <DependentUpon>Registo.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="OptionMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PontuacaoGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

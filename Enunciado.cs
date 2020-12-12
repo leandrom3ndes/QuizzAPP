@@ -13,7 +13,7 @@ namespace QuizAppWPF
     {
 
         public static List<Questao> Questoes = new List<Questao>();
-        
+        public static int pontuacaoMax = 0;
 
         public static void parseData(string data)
         {
@@ -22,11 +22,11 @@ namespace QuizAppWPF
             {
                 List<Resposta> ListaRespostas = new List<Resposta>();
                 // get correct answer
-                ListaRespostas.Add(new Resposta((string)result["correct_answer"], true));
+                ListaRespostas.Add(new Resposta(System.Net.WebUtility.HtmlDecode((string)result["correct_answer"]), true));
                 // get remaining answers
                 foreach (string wrongAnswer in result["incorrect_answers"])
                 {
-                    ListaRespostas.Add(new Resposta(wrongAnswer, false));
+                    ListaRespostas.Add(new Resposta(System.Net.WebUtility.HtmlDecode(wrongAnswer), false));
                 }
                 // instantiate question ( with answers )
                 int difficulty = 0;
@@ -43,8 +43,10 @@ namespace QuizAppWPF
                         break;
 
                 }
-                Questao questao = new Questao((string)result["question"], difficulty, ListaRespostas, (string)result["type"]);
+                Questao questao = new Questao(System.Net.WebUtility.HtmlDecode((string)result["question"]), difficulty, ListaRespostas, (string)result["type"]);
                 Questoes.Add(questao);
+                pontuacaoMax = pontuacaoMax + difficulty;
+
             }
         }
     }

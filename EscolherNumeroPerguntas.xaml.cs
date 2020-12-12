@@ -43,7 +43,8 @@ namespace QuizAppWPF
 
 
             Enunciado.parseData(result);
-            
+
+
             Game openGame = new Game(Int32.Parse(numeroPerguntas));
             this.NavigationService.Navigate(openGame);
             System.Diagnostics.Debug.WriteLine(result);

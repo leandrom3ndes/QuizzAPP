@@ -155,3 +155,5 @@ C:\Users\lenovo\Documents\GitHub\QuizzAPP\obj\Debug\QuizAppWPF.csproj.CoreCompil
 C:\Users\lenovo\Documents\GitHub\QuizzAPP\obj\Debug\QuizAppWPF.csproj.CopyComplete
 C:\Users\lenovo\Documents\GitHub\QuizzAPP\obj\Debug\QuizAppWPF.exe
 C:\Users\lenovo\Documents\GitHub\QuizzAPP\obj\Debug\QuizAppWPF.pdb
+C:\Users\lenovo\Documents\GitHub\QuizzAPP\obj\Debug\PontuacaoGame.g.cs
+C:\Users\lenovo\Documents\GitHub\QuizzAPP\obj\Debug\PontuacaoGame.baml
