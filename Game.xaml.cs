@@ -120,6 +120,12 @@ namespace QuizAppWPF
                     B.Visibility = Visibility.Visible;
                     Question.Visibility = Visibility.Visible;
                     break;
+                case "HomeButton":
+                    MessageBox.Show("Os dados desta sessão foram eliminados.");
+                    PontuacaoGame.ClearStats();
+                    OptionMenu optionMenu1 = new OptionMenu();
+                    this.NavigationService.Navigate(optionMenu1);
+                    break;
             }
         }
    
@@ -288,7 +294,7 @@ namespace QuizAppWPF
                     break;
             }
             DisableButtons(selectedAnswer, correctPosition);
-            Score.Content =  pontuacao;
+           
         }
         private void VerifyAnswerAux(string selectedAnswer)
         {

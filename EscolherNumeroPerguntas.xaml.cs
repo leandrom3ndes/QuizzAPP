@@ -19,8 +19,6 @@ namespace QuizAppWPF
     {
         private string idCategoria { get; set; }
         private string dificuldade { get; set; }
-
-        private int numeroQuestao = 0;
         public EscolherNumeroPerguntas(string idCategoria, string dificuldade)
         {
             this.idCategoria = idCategoria;
