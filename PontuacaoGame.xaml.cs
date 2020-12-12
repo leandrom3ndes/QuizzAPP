@@ -46,10 +46,9 @@ namespace QuizAppWPF
 
             }
         }
-        private void ClearStats()
+        public static void ClearStats()
         {
             Enunciado.Questoes.Clear();
-            //Enunciado.ListaRespostas.Clear();
             Game.correctAnswerPositionList.Clear();
             Enunciado.pontuacaoMax = 0;
         }
