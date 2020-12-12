@@ -115,6 +115,7 @@
     <Compile Include="EscolherNumeroPerguntas.xaml.cs">
       <DependentUpon>EscolherNumeroPerguntas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GlobalMethods.cs" />
     <Compile Include="Registo.xaml.cs">
       <DependentUpon>Registo.xaml</DependentUpon>
     </Compile>

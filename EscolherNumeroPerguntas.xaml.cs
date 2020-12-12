@@ -1,23 +1,14 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using static GlobalMethods.GlobalMethods;
 
 namespace QuizAppWPF
 {
@@ -67,16 +58,7 @@ namespace QuizAppWPF
 
         private static string BaseUrl = "https://opentdb.com/api.php?amount=REPLACENUMBER&category=REPLACE_CATEGORY";
 
-        static async Task<string> getData(string url)
-        {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(url);
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-            return responseBody;
-        }
-
-        static void parseQuizzData(string data)
+        public void parseQuizzData(string data)
         {
             JObject jobject = (JObject)JsonConvert.DeserializeObject(data);
             foreach (JObject result in jobject["results"])
@@ -110,11 +92,9 @@ namespace QuizAppWPF
 
             string numeroPerguntas = senderButton.Name.Remove(0, 1);
 
-            Regex rgx1 = new Regex("REPLACENUMBER");
-            string url = rgx1.Replace(BaseUrl, numeroPerguntas);
+            string url = getReplaceRegex(BaseUrl, "REPLACENUMBER", numeroPerguntas);
 
-            Regex rgx = new Regex("REPLACE_CATEGORY");
-            url = rgx.Replace(url, idCategoria);
+            url = getReplaceRegex(url, "REPLACE_CATEGORY", idCategoria);
 
             if (dificuldade != "random")
             {
@@ -130,6 +110,7 @@ namespace QuizAppWPF
 
             parseQuizzData(result);
 
+            System.Diagnostics.Debug.WriteLine(result);
 
         }
     }
