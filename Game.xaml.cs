@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Timers;
+using System.Windows.Threading;
 
 namespace QuizAppWPF
 {
@@ -24,6 +26,7 @@ namespace QuizAppWPF
     /// </summary>
     public partial class Game : Page
     {
+        DispatcherTimer dispatcherTimer;
         private int questionsNumber { get; set; }
         int pontuacao = 0;
         static Random rand = new Random();//DateTime.Now.ToString().GetHashCode()
@@ -31,13 +34,45 @@ namespace QuizAppWPF
         bool hasPressed = false;
         public static List<string> correctAnswerPositionList = new List<string>();
 
+        int counter = 5;
+
         List<string> positions = new List<string>() { "A", "B", "C", "D" };
 
         public Game(int questionsNumber)
         {
             this.questionsNumber = questionsNumber;
-            InitializeComponent();
+            InitializeComponent();  
         }
+
+        private void startTimer()
+        {
+            dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(debugging);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();
+            TimerLabel.Width = 800;
+            EnableDisableButtons(true);
+        }
+
+        private void debugging(object sender, EventArgs e)
+        {
+            counter--;    
+            changeLabel();
+            System.Diagnostics.Debug.WriteLine(counter);
+            if (counter == 0) { stopCounter(); }
+        }
+
+        private void stopCounter()
+        {
+            dispatcherTimer.Stop();
+            counter = 5;
+            EnableDisableButtons(false);
+        }
+        private void changeLabel()
+        {
+            TimerLabel.Width = counter * 800 / 5;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string objname = ((Button)sender).Name;
@@ -93,7 +128,7 @@ namespace QuizAppWPF
                     break;
                 case "Next":
                     enunciadoQ++;
-                    EnableButtons();
+                    EnableDisableButtons(true);
                     if (enunciadoQ < questionsNumber)
                     {
                         hasPressed = false;
@@ -102,6 +137,7 @@ namespace QuizAppWPF
                         C.ClearValue(Button.BackgroundProperty);
                         D.ClearValue(Button.BackgroundProperty);
                         ShowQuestion();
+                        startTimer();
                     }
                     else
                     {
@@ -119,6 +155,8 @@ namespace QuizAppWPF
                     A.Visibility = Visibility.Visible;
                     B.Visibility = Visibility.Visible;
                     Question.Visibility = Visibility.Visible;
+                    startTimer();
+                    TimerLabel.Visibility = Visibility.Visible;
                     break;
             }
         }
@@ -309,12 +347,12 @@ namespace QuizAppWPF
             }
         }
 
-        private void EnableButtons()
+        private void EnableDisableButtons(bool value)
         {
-            A.IsEnabled = true;
-            B.IsEnabled = true;
-            C.IsEnabled = true;
-            D.IsEnabled = true;
+            A.IsEnabled = value;
+            B.IsEnabled = value;
+            C.IsEnabled = value;
+            D.IsEnabled = value;
         }
 
         private void DisableButtons(string selectedanswser, string correctanswer)
@@ -350,5 +388,8 @@ namespace QuizAppWPF
                 }
             }
         }
+
+
+
     }
 }

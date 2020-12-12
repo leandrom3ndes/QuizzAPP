@@ -22,6 +22,7 @@ namespace GlobalMethods
             Regex rgx1 = new Regex(expressionToReplace);
             return rgx1.Replace(baseString, replacementValue);
         }
+
     }
 
 }
