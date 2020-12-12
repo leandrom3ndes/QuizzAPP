@@ -25,13 +25,14 @@
 
         <Image Source="quizTime.jpg" Stretch="Fill" Grid.ColumnSpan="5" Grid.RowSpan="4"/>
 
-        <TextBox Name="UsernameTbox" Grid.ColumnSpan="4" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="28,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="507" Grid.Row="1"/>
+        <Label Content="Nome de utilizador" Grid.Column="1" HorizontalAlignment="Left" Margin="111,84,0,0" VerticalAlignment="Top" Width="369" Grid.ColumnSpan="3" FontSize="30" FontWeight="Bold" Background="#00000000" Foreground="#FFC9B5B5" Grid.RowSpan="2"/>
+        <Label Content="Palavra passe" Grid.Column="1" HorizontalAlignment="Left" Margin="111,44,0,0" VerticalAlignment="Top" Width="201" Grid.ColumnSpan="2" FontSize="30" FontWeight="Bold" Background="#00000000" Foreground="#FFC9B5B5" Grid.Row="1"/>
 
-        <Button Name="LoginBtn" Content="Login" Grid.Column="2" HorizontalAlignment="Left" Margin="145,0.4,0,0" Grid.Row="3" VerticalAlignment="Top" Width="175" Grid.ColumnSpan="2" Height="45" Click="LoginBtn_Click_1"/>
-        <PasswordBox Name="passTbox" Grid.Column="1" HorizontalAlignment="Left" Margin="28,72.2,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="452"/>
-        <Button Name="regBtn" Content="Registar" Grid.Column="1" HorizontalAlignment="Left" Margin="28,0.4,0,0" Grid.Row="3" VerticalAlignment="Top" Width="175" Grid.ColumnSpan="2" Height="45" Click="LoginBtn_Click_1"/>
+        <TextBox Name="UsernameTbox" Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="111,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" Grid.Row="1"/>
+        <PasswordBox Name="passTbox" Grid.Column="1" HorizontalAlignment="Left" Margin="111,92,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="274" Height="28" Grid.RowSpan="2"/>
 
-
+        <Button Name="LoginBtn" Content="Login" HorizontalAlignment="Left" Margin="76,0,0,0" VerticalAlignment="Top" Width="267" Height="94" BorderBrush="#FF16A6A0" FontSize="36" Click="LoginBtnClick" Foreground="White" Background="{x:Null}" Grid.ColumnSpan="3" Grid.Row="3" Grid.Column="2"/>
+        <Button Name="regBtn" Content="Registo" HorizontalAlignment="Left" Margin="74,0,0,0" VerticalAlignment="Top" Width="267" Height="94" BorderBrush="#FF16A6A0" FontSize="36" Click="LoginBtnClick" Foreground="White" Background="{x:Null}" Grid.ColumnSpan="3" Grid.Row="3"/>
 
 
     </Grid>

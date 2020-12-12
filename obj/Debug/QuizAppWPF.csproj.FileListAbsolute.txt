@@ -103,3 +103,7 @@ C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\bin\Debug\Sys
 C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\Registo.baml
 C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\EscolherDificuldade.baml
 C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\EscolherNumeroPerguntas.baml
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\EscolherDificuldade.g.cs
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\EscolherNumeroPerguntas.g.cs
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\EscolherDificuldade.baml
+C:\Users\joaol\OneDrive\Documentos\GitHub\QuizzAPP\obj\Debug\EscolherNumeroPerguntas.baml

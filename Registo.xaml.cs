@@ -37,7 +37,7 @@ namespace QuizAppWPF
 
         IFirebaseClient client;
 
-        private async void RegBtn_Click_1(object sender, RoutedEventArgs e)
+        private async void RegBtnClick(object sender, RoutedEventArgs e)
         {
             string objname = ((Button)sender).Name;
             switch (objname)
@@ -88,7 +88,7 @@ namespace QuizAppWPF
                 Password = passTbox.Password
             };
 
-            if (Utilizador.IsEqualName(ResUser, user))
+            if (Utilizador.IsEqual(ResUser, user))
             {
                 MessageBox.Show("O utilizador já existe! Escolha outro nome.");
             }
