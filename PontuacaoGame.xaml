@@ -10,9 +10,8 @@
 
     <Grid Background="#FF96D2DA">
         <Label Content="Pontuação" HorizontalAlignment="Left" Margin="216,10,0,0" VerticalAlignment="Top" Height="55" Width="230" Background="#FF186AB7" FontFamily="Showcard Gothic" FontSize="36"/>
-        <Label Name="PontObtida" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="216,156,0,0" Height="65" Width="103" FontFamily="Segoe UI Black" FontSize="36"/>
-        <Label Name="PontTotal" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="488,156,0,0" Height="65" Width="103" FontFamily="Segoe UI Black" FontSize="36"/>
-        <Button Name="JogarNovamente" Content="Tentar novamente" Click="Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="164" Margin="187,314,0,0" Height="62"/>
+        <Label Name="Resultado" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="187,137,0,0" Height="auto" Width="auto" FontFamily="Segoe UI Black" FontSize="36"/>
+        <Button Name="JogarNovamente" Content="Jogar novamente" Click="Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="164" Margin="187,314,0,0" Height="62"/>
         <Button Name="VoltarMenu" Content="Voltar" HorizontalAlignment="Left" Click="Button_Click" VerticalAlignment="Top" Width="164" Margin="488,314,0,0" Height="62"/>
 
     </Grid>

@@ -35,17 +35,13 @@ namespace QuizAppWPF
             string numeroPerguntas = senderButton.Name.Remove(0, 1);
 
             string url = atualizaURL(numeroPerguntas, idCategoria , dificuldade);
-            logUrl.Content = url;
 
             string result = await getData(url);
 
-
             Enunciado.parseData(result);
-
 
             Game openGame = new Game(Int32.Parse(numeroPerguntas));
             this.NavigationService.Navigate(openGame);
-            System.Diagnostics.Debug.WriteLine(result);
 
         }
         private string atualizaURL(string nrPerguntas, string idCategoria, string dificuldade)

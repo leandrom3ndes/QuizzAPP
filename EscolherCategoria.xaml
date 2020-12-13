@@ -6,8 +6,12 @@
         xmlns:local="clr-namespace:QuizAppWPF"
         mc:Ignorable="d"
         Title="EscolherCategoria" Height="450" Width="800">
-    <Grid>
-        <Image Source="neonWall.jpg" Stretch="Fill" Grid.ColumnSpan="2" Margin="0,0,0,-0.4"/>
+    <Grid Height="450" Width="800">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="149*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image Source="neonWall.jpg"  Stretch="Fill" Grid.RowSpan="2"/>
         <Label Content="Escolha a categoria" Name="info" HorizontalAlignment="Center" Margin="197,0,-167,0" VerticalAlignment="Top" Width="770" Height="72" Foreground="#FFC20707" FontSize="48" FontWeight="Bold"/>
         <Button Name="ID19" Click="CategoriaEscolhida" Content="Matematica" HorizontalAlignment="Left" Margin="141,97,0,0" VerticalAlignment="Top" Width="163" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
         <Button Name="ID30" Click="CategoriaEscolhida" Content="Ciencias" HorizontalAlignment="Left" Margin="388,97,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>

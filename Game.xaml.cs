@@ -34,140 +34,129 @@ namespace QuizAppWPF
         bool hasPressed = false;
         public static List<string> correctAnswerPositionList = new List<string>();
 
-        int counter = 5;
+        static int counterMax = 15;
+        static int counterAtual = counterMax;
 
         List<string> positions = new List<string>() { "A", "B", "C", "D" };
 
         public Game(int questionsNumber)
         {
             this.questionsNumber = questionsNumber;
-            InitializeComponent();  
+            InitializeComponent();
         }
 
         private void startTimer()
         {
             dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Tick += new EventHandler(debugging);
+            dispatcherTimer.Tick += new EventHandler(timerCountdown);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
             TimerLabel.Width = 800;
             EnableDisableButtons(true);
         }
 
-        private void debugging(object sender, EventArgs e)
+        private void timerCountdown(object sender, EventArgs e)
         {
-            counter--;    
-            changeLabel();
-            System.Diagnostics.Debug.WriteLine(counter);
-            if (counter == 0) { stopCounter(); }
+            counterAtual--;
+            TimerLabel.Width = counterAtual * 800 / counterMax;
+            if (counterAtual == 0) { counterTimeout(); }
+        }
+
+        private void counterTimeout()
+        {
+            stopCounter();
+            EnableDisableButtons(false);
+            Next.Visibility = Visibility.Visible;
         }
 
         private void stopCounter()
         {
             dispatcherTimer.Stop();
-            counter = 5;
-            EnableDisableButtons(false);
-        }
-        private void changeLabel()
-        {
-            TimerLabel.Width = counter * 800 / 5;
+            counterAtual = counterMax;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string objname = ((Button)sender).Name;
-            switch (objname)
+            string objname = ( (Button) sender ).Name; 
+
+            if ( positions.Contains( objname ) )
             {
-                case "A":
-                    if (hasPressed == false)
-                    {
-                        VerifyAnswer("A");
-                        Next.Visibility = Visibility.Visible;
-                        hasPressed = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Para de tentar aldrabar pallhaço");
-                    }
-                    break;
-                case "B":
-                    if (hasPressed == false)
-                    {
-                        VerifyAnswer("B");
-                        Next.Visibility = Visibility.Visible;
-                        hasPressed = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Para de tentar aldrabar pallhaço");
-                    }
-                    break;
-                case "C":
-                    if (hasPressed == false)
-                    {
-                        VerifyAnswer("C");
-                        Next.Visibility = Visibility.Visible;
-                        hasPressed = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Para de tentar aldrabar pallhaço");
-                    }
-                    break;
-                case "D":
-                    if (hasPressed == false)
-                    {
-                        VerifyAnswer("D");
-                        Next.Visibility = Visibility.Visible;
-                        hasPressed = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Para de tentar aldrabar pallhaço");
-                    }
-                    break;
-                case "Next":
-                    enunciadoQ++;
-                    EnableDisableButtons(true);
-                    if (enunciadoQ < questionsNumber)
-                    {
-                        hasPressed = false;
-                        A.ClearValue(Button.BackgroundProperty);
-                        B.ClearValue(Button.BackgroundProperty);
-                        C.ClearValue(Button.BackgroundProperty);
-                        D.ClearValue(Button.BackgroundProperty);
-                        ShowQuestion();
-                        startTimer();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Acabou palhaço");
-                        PontuacaoGame pontGame = new PontuacaoGame(Enunciado.pontuacaoMax, pontuacao);
-                        this.NavigationService.Navigate(pontGame);
-                    }
-                    Next.Visibility = Visibility.Hidden;
-                    break;
-                case "Start":
-                 //   await getData();
-                    CreateRandomSequence();
-                    Start.Visibility = Visibility.Hidden;
-                    ShowQuestion();
-                    A.Visibility = Visibility.Visible;
-                    B.Visibility = Visibility.Visible;
-                    Question.Visibility = Visibility.Visible;
-                    startTimer();
-                    TimerLabel.Visibility = Visibility.Visible;
-                    break;
-                case "HomeButton":
-                    MessageBox.Show("Os dados desta sessão foram eliminados.");
-                    PontuacaoGame.ClearStats();
-                    OptionMenu optionMenu1 = new OptionMenu();
-                    this.NavigationService.Navigate(optionMenu1);
-                    break;
+                if ( !hasPressed ) { handleButtonPress( objname ); }
+                else { MessageBox.Show("Para de tentar aldrabar pallhaço"); }
+            }
+
+            // other buttons which are not possible answers
+            else
+            {
+                switch ( objname )
+                {
+                    case "Next":
+                        enunciadoQ++;
+                        EnableDisableButtons(true);
+                        Next.Visibility = Visibility.Hidden;
+
+                        if (enunciadoQ < questionsNumber) { nextQuestion();}
+
+                        else { gameEnded(); }
+
+                        break;
+
+                    case "Start":
+                        startGame();
+                        break;
+
+                    case "HomeButton":
+                        HomeButtonPressed();
+                        break;
+                }
+
             }
         }
-   
+        
+        private void HomeButtonPressed()
+        {
+            stopCounter();
+            MessageBox.Show("Os dados desta sessão foram eliminados.");
+            PontuacaoGame.ClearStats();
+            OptionMenu optionMenu1 = new OptionMenu();
+            NavigationService.Navigate(optionMenu1);
+        }
 
+        private void gameEnded()
+        {
+            MessageBox.Show("Acabou palhaço");
+            PontuacaoGame pontGame = new PontuacaoGame(Enunciado.pontuacaoMax, pontuacao);
+            NavigationService.Navigate(pontGame);
+        }
+
+        private void startGame()
+        {
+            CreateRandomSequence();
+            Start.Visibility = Visibility.Hidden;
+            ShowQuestion();
+            A.Visibility = Visibility.Visible;
+            B.Visibility = Visibility.Visible;
+            Question.Visibility = Visibility.Visible;
+            TimerLabel.Visibility = Visibility.Visible;
+            startTimer();
+        }
+
+        private void nextQuestion()
+        {
+            hasPressed = false;
+            modifyAllButtons("clear-background");
+            ShowQuestion();
+            startTimer();
+        }
+
+        private void handleButtonPress(string buttonPressed)
+        {
+            stopCounter();
+            VerifyAnswer( buttonPressed );
+            Next.Visibility = Visibility.Visible;
+            hasPressed = true;
+            
+        }
 
         private void CreateRandomSequence()
         {
@@ -183,23 +172,17 @@ namespace QuizAppWPF
             Question.Content = Enunciado.Questoes[enunciadoQ].value;
             if(Enunciado.Questoes[enunciadoQ].type == "boolean")
             {
-                // ShowAnswer();
                 ShowBooleanAnswer();
-                //MessageBox.Show("Chaves é bolha");
             }
             else if (Enunciado.Questoes[enunciadoQ].type == "multiple")
             {
-                if (C.IsVisible == false)
+                if (!C.IsVisible)
                 {
                     C.Visibility = Visibility.Visible;
                     D.Visibility = Visibility.Visible;
-                    ShowAnswer();
                 }
-                else
-                {
-                    ShowAnswer();
-                }
-//                MessageBox.Show("Leandro é bolha");
+
+                ShowAnswer();
             }
         }
 
@@ -209,20 +192,14 @@ namespace QuizAppWPF
             D.Visibility = Visibility.Hidden;
             A.Content = "True";
             B.Content = "False";
-            for (int i = 0; i < 1; i++)
-            {
-                if(Enunciado.Questoes[enunciadoQ].Respostas[i].correctAnswer == true)
-                {
-                    if (Enunciado.Questoes[enunciadoQ].Respostas[i].value== "True") //se a resposta correta for true, afirmo que o botão A possui a resposta correta
-                    {
-                        correctAnswerPositionList[enunciadoQ] = "A";
-                    }
-                    else
-                    {
-                        correctAnswerPositionList[enunciadoQ] = "B";
-                    }
-                }
-            }
+
+            Resposta primeiraResposta = Enunciado.Questoes[enunciadoQ].Respostas[0];
+
+            // se a resposta correta for true, afirmo que o botão A possui a resposta correta
+            if ( primeiraResposta.correctAnswer) { correctAnswerPositionList[enunciadoQ] = "A"; }
+            
+            else { correctAnswerPositionList[enunciadoQ] = "B"; }
+
         }
 
         private void ShowAnswer()
@@ -231,26 +208,14 @@ namespace QuizAppWPF
             string correctPosition = correctAnswerPositionList[enunciadoQ]; //para teste, este valor deverá ser atribuído randomicamente
             List<string> Incorretpositions = positions.ToList();
             Incorretpositions.Remove(correctPosition); //lista das resposta incorretas
+            
             foreach ( Resposta resposta in Enunciado.Questoes[enunciadoQ].Respostas) //percorre as respoostas da questão atual
             {
-                if (resposta.correctAnswer == true) //mostrar resposta correta
+                if (resposta.correctAnswer) //mostrar resposta correta
                 {
-                    switch (correctPosition)
-                    {
-                        case "A":
-                            A.Content = resposta.value;
-                            break;
-                        case "B":
-                            B.Content = resposta.value;
-                            break;
-                        case "C":
-                            C.Content = resposta.value;
-                            break;
-                        case "D":
-                            D.Content = resposta.value;
-                            break;
-                    }
+                    modifyDynamicButton(correctPosition, "new-value", resposta.value);
                 }
+
                 else //mostrar resposta incorreta
                 {
                     if (j <= 2)
@@ -262,140 +227,92 @@ namespace QuizAppWPF
             }
         }
 
+        // displays the content of all incorrect answers
         private void ShowIncorretAnswer(Resposta resposta, List<string> Incorretpositions, int j)
         {
-            switch (Incorretpositions[j])
-            {
-                case "A":
-                    A.Content = resposta.value;
-                    break;
-                case "B":
-                    B.Content = resposta.value;
-                    break;
-                case "C":
-                    C.Content = resposta.value;
-                    break;
-                case "D":
-                    D.Content = resposta.value;
-                    break;
-            }
+            modifyDynamicButton(Incorretpositions[j], "new-value", resposta.value);
+
         }
 
         private void VerifyAnswer(string selectedAnswer)
         {
             string correctPosition = correctAnswerPositionList[enunciadoQ];
-            switch (correctPosition)
+
+            // green background on correct button
+            modifyDynamicButton(correctPosition, "green-background");
+
+            if (selectedAnswer != correctPosition)
             {
-                case "A":
-                    A.Background = Brushes.Green;
-                    if (selectedAnswer != correctPosition) 
-                    {
-                        VerifyAnswerAux(selectedAnswer);
-                    }
-                    else //atribuir pontuação
-                    {
-                        pontuacao = pontuacao + Enunciado.Questoes[enunciadoQ].pontuacao;
-                    }
-                    break;
-                case "B":
-                    B.Background = Brushes.Green;
-                    if (selectedAnswer != correctPosition) 
-                    {
-                        VerifyAnswerAux(selectedAnswer); //caso resposta esteja errada coloca a escolhida a vermelho
-                    }
-                    else //atribuir pontuação
-                    {
-                        pontuacao = pontuacao + Enunciado.Questoes[enunciadoQ].pontuacao;
-                    }
-                    break;
-                case "C":
-                    C.Background = Brushes.Green;
-                    if (selectedAnswer != correctPosition) 
-                    {
-                        VerifyAnswerAux(selectedAnswer);
-                    }
-                    else //atribuir pontuação
-                    {
-                        pontuacao = pontuacao + Enunciado.Questoes[enunciadoQ].pontuacao;
-                    }
-                    break;
-                case "D":
-                    D.Background = Brushes.Green;
-                    if (selectedAnswer != correctPosition) 
-                    {
-                        VerifyAnswerAux(selectedAnswer);
-                    }
-                    else //atribuir pontuação
-                    {
-                        pontuacao = pontuacao + Enunciado.Questoes[enunciadoQ].pontuacao;
-                    }
-                    break;
+                modifyDynamicButton(selectedAnswer, "red-background");
             }
+            else //atribuir pontuação
+            {
+                pontuacao += Enunciado.Questoes[enunciadoQ].pontuacao;
+            }
+            
             DisableButtons(selectedAnswer, correctPosition);
-           
-        }
-        private void VerifyAnswerAux(string selectedAnswer)
-        {
-            switch (selectedAnswer) 
-            {
-                case "A":
-                    A.Background = Brushes.Red;
-                    break;
-                case "B":
-                    B.Background = Brushes.Red;
-                    break;
-                case "C":
-                    C.Background = Brushes.Red;
-                    break;
-                case "D":
-                    D.Background = Brushes.Red;
-                    break;
-            }
+
         }
 
         private void EnableDisableButtons(bool value)
         {
-            A.IsEnabled = value;
-            B.IsEnabled = value;
-            C.IsEnabled = value;
-            D.IsEnabled = value;
+            modifyAllButtons("enable-disable", value.ToString());
+        }
+
+        private void modifyAllButtons( string action, string value = null )
+        {
+            foreach (string buttonName in positions)
+            {
+                modifyDynamicButton(buttonName, action, value);
+            }
         }
 
         private void DisableButtons(string selectedanswser, string correctanswer)
         {
             foreach (string i in positions)
             {
-                switch (i)
+                if (i != selectedanswser && i != correctanswer)
                 {
-                    case "A":
-                        if (i != selectedanswser && i != correctanswer)
-                        {
-                            A.IsEnabled = false;
-                        }
-                        break;
-                    case "B":
-                        if (i != selectedanswser && i != correctanswer)
-                        {
-                            B.IsEnabled = false;
-                        }
-                        break;
-                    case "C":
-                        if (i != selectedanswser && i != correctanswer)
-                        {
-                            C.IsEnabled = false;
-                        }
-                        break;
-                    case "D":
-                        if (i != selectedanswser && i != correctanswer)
-                        {
-                            D.IsEnabled = false;
-                        }
-                        break;
+                    modifyDynamicButton(i, "enable-disable", "false");
                 }
             }
         }
 
+        private void modifyDynamicButton(string name, string action, string value = null)
+        {
+            object dynamicObject = FindName(name);
+            Button dynamicButton = getButton(dynamicObject);
 
+            switch ( action )
+            {
+                case "red-background":
+                    dynamicButton.Background = Brushes.Red;
+                    break;
+
+                case "green-background":
+                    dynamicButton.Background = Brushes.Green;
+                    break;
+
+                case "new-value":
+                    dynamicButton.Content = value;
+                    break;
+
+                case "enable-disable":
+                    dynamicButton.IsEnabled = bool.Parse(value);
+                    break;
+
+                case "clear-background":
+                    dynamicButton.ClearValue(BackgroundProperty);
+                    break;
+
+            }
+
+        }
+
+        private Button getButton(object buttonObject)
+        {
+            return ((Button)buttonObject);
+        }
 
     }
 }

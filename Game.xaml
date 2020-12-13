@@ -44,5 +44,6 @@
                 <ImageBrush ImageSource="home.png" Stretch="UniformToFill"/>
             </Button.Background>
         </Button>
+        <Label Name="TimerLabel"  Visibility="Hidden" Height="15" Width="800" Background="#FF8BC5B0" FontFamily="Times New Roman" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,31,0,0" RenderTransformOrigin="3.182,-3.062" Grid.Row="2" Grid.ColumnSpan="4"/>
     </Grid>
 </Page>
