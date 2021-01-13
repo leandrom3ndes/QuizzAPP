@@ -40,7 +40,11 @@
         <TextBox Name="nrAlunoTbox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="87,13,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.ColumnSpan="3" />
         <PasswordBox Name="passTbox" Grid.Column="1" HorizontalAlignment="Left" Margin="87,84,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="222" Height="18"/>
 
-        <Button Name="regBtn" Content="Registar" HorizontalAlignment="Left" Margin="69,0,0,0" VerticalAlignment="Top" Width="267" Height="60" BorderBrush="#FF16A6A0" FontSize="36" Click="RegBtnClick" Foreground="White" Background="{x:Null}" Grid.ColumnSpan="3" Grid.Row="4" Grid.Column="1"/>
-
+        <Button Name="regBtn" Content="Registar" HorizontalAlignment="Left" Margin="60,10,0,0" VerticalAlignment="Top" Width="267" Height="60" BorderBrush="#FF16A6A0" FontSize="36" Click="RegBtnClick" Foreground="White" Background="{x:Null}" Grid.ColumnSpan="3" Grid.Row="4" Grid.Column="1"/>
+        <Button x:Name="HomeButton123" Click="RegBtnClick" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Margin="28,10,0,0" Height="74" BorderBrush="{x:Null}" Foreground="{x:Null}" Grid.Column="4">
+            <Button.Background>
+                <ImageBrush ImageSource="home.png" Stretch="UniformToFill"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Page>

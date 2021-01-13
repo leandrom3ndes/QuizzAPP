@@ -51,7 +51,9 @@ namespace QuizAppWPF
             dispatcherTimer.Tick += new EventHandler(timerCountdown);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
-            TimerLabel.Width = 800;
+            TimerLabel.Width = 800; //volta à largura inicial
+            var converter = new System.Windows.Media.BrushConverter();
+            TimerLabel.Background = (Brush)converter.ConvertFromString("#FF8BC5B0"); //volta à cor inicial
             EnableDisableButtons(true);
         }
 
@@ -59,6 +61,10 @@ namespace QuizAppWPF
         {
             counterAtual--;
             TimerLabel.Width = counterAtual * 800 / counterMax;
+            if (counterAtual <=5)
+            {
+                TimerLabel.Background = Brushes.Red;
+            } 
             if (counterAtual == 0) { counterTimeout(); }
         }
 
@@ -124,7 +130,7 @@ namespace QuizAppWPF
 
         private void gameEnded()
         {
-            MessageBox.Show("Acabou palhaço");
+            MessageBox.Show("A sua sessão chegou ao fim. Pressione Ok para descobrir a pontuação que obteve");
             PontuacaoGame pontGame = new PontuacaoGame(Enunciado.pontuacaoMax, pontuacao);
             NavigationService.Navigate(pontGame);
         }

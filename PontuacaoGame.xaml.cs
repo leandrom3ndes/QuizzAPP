@@ -23,7 +23,7 @@ namespace QuizAppWPF
         public PontuacaoGame(int pontTotal, int pontObtida)
         {
             InitializeComponent();
-            Resultado.Content = "Obteve " + resultInPercentage(pontTotal, pontObtida) + " % das respostas corretas!";
+            showScores(pontTotal, pontObtida);
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -50,9 +50,16 @@ namespace QuizAppWPF
             Enunciado.pontuacaoMax = 0;
         }
 
-        private double resultInPercentage( int pontTotal, int pontObtida )
+        private void showScores(int pontTotal, int pontObtida)
         {
-            return pontObtida * 100 / pontTotal;
+            Resultado.Content = "Obteve " + resultInPercentage(pontTotal, pontObtida) + " % das respostas corretas!";
+            Score.Content = "Score: " + pontObtida + "/" + pontTotal;
+        }
+
+        private decimal resultInPercentage( int pontTotal, int pontObtida )
+        {
+            var result = (pontObtida / (decimal)pontTotal) * 100;
+            return result ;
         }
 
     }

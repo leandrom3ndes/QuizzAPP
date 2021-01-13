@@ -29,6 +29,7 @@ namespace QuizAppWPF
             InitializeComponent();
         }
 
+        //Login loginMenu = new Login();
         IFirebaseConfig ifc = new FirebaseConfig()
         {
             AuthSecret = "fBAXrDx2fkycRdUVuFTdofM73afM5gfa5rbzTXry",
@@ -44,6 +45,9 @@ namespace QuizAppWPF
             {
                 case "regBtn":
                     await Register();
+                    break;
+                case "HomeButton123":
+                    NavigationService.Navigate(Enunciado.loginMenu);
                     break;
 
             }
@@ -96,6 +100,7 @@ namespace QuizAppWPF
             {
                 client.Set(@"Utilizadores/" + UsernameTbox.Text, user);
                 MessageBox.Show("Registo efetuado com sucesso!");
+                NavigationService.Navigate(Enunciado.loginMenu);
             }
 
         }

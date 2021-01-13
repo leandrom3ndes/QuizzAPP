@@ -11,10 +11,10 @@ namespace QuizAppWPF
 
     public class Enunciado
     {
-
         public static List<Questao> Questoes = new List<Questao>();
         public static int pontuacaoMax = 0;
-
+        public static Login loginMenu = new Login();
+        //podemos colocar aqui todas as instancias das navegações, deixei o do login como exemplo
         public static void parseData(string data)
         {
             JObject jobject = (JObject)JsonConvert.DeserializeObject(data);
