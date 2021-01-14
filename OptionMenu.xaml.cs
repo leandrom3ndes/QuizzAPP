@@ -31,11 +31,10 @@ namespace QuizAppWPF
             switch (objname)
             {
                 case "Jogo":
-                    EscolherCategoria pageCategoria = new EscolherCategoria();
-                    this.NavigationService.Navigate( pageCategoria );
+                    this.NavigationService.Navigate( Enunciado.pageCategoria);
                     break;
                 case "Classificacao":
-                    MessageBox.Show("O chaves é muito bolha!!");
+                    this.NavigationService.Navigate(Enunciado.scoreMenu);
                     break;
                 case "Sair":
                     MessageBox.Show("Obrigado e volte sempre!");

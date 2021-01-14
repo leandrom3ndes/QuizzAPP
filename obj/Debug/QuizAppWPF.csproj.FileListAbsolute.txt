@@ -159,3 +159,5 @@ C:\Users\lenovo\Documents\GitHub\QuizzAPP\obj\Debug\PontuacaoGame.g.cs
 C:\Users\lenovo\Documents\GitHub\QuizzAPP\obj\Debug\PontuacaoGame.baml
 C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\PontuacaoGame.g.cs
 C:\Users\Admin\Desktop\Francisco\Universidade\Mestrado\ES\QuizzApp\obj\Debug\PontuacaoGame.baml
+C:\Users\lenovo\Documents\GitHub\QuizzAPP\obj\Debug\Score.g.cs
+C:\Users\lenovo\Documents\GitHub\QuizzAPP\obj\Debug\Score.baml

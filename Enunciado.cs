@@ -13,6 +13,8 @@ namespace QuizAppWPF
     {
         public static List<Questao> Questoes = new List<Questao>();
         public static int pontuacaoMax = 0;
+        public static Score scoreMenu = new Score();
+        public static EscolherCategoria pageCategoria = new EscolherCategoria();
         public static Login loginMenu = new Login();
         //podemos colocar aqui todas as instancias das navegações, deixei o do login como exemplo
         public static void parseData(string data)

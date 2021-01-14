@@ -13,6 +13,7 @@ namespace QuizAppWPF
         public string Curso { get; set; }
         public string nrAluno { get; set; }
         public string Password { get; set; }
+        public List<int> userScores { get; set; }
 
         private static string error = "Dados incorretos. Tente novamente";
 

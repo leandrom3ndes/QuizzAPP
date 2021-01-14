@@ -28,9 +28,7 @@ namespace QuizAppWPF
         {
             InitializeComponent();
         }
-
-        //Login loginMenu = new Login();
-        IFirebaseConfig ifc = new FirebaseConfig()
+         IFirebaseConfig ifc = new FirebaseConfig()
         {
             AuthSecret = "fBAXrDx2fkycRdUVuFTdofM73afM5gfa5rbzTXry",
             BasePath = "https://quizz-login-default-rtdb.europe-west1.firebasedatabase.app/"
@@ -89,7 +87,8 @@ namespace QuizAppWPF
                 nomeCurso = cursoTbox.Text,
                 Curso = TipoCbox.Text,
                 nrAluno = nrAlunoTbox.Text,
-                Password = passTbox.Password
+                Password = passTbox.Password,
+               // userScores = null
             };
 
             if (Utilizador.IsEqualName(ResUser, user))
