@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using static GlobalMethods.GlobalMethods;
@@ -10,45 +11,59 @@ namespace QuizAppWPF
     /// </summary>
     public partial class EscolherNumeroPerguntas : Page
     {
-        public string idCategoria { get; set; }
-        public string dificuldade { get; set; }
+        Total_EscolherNumeroPerguntas obj;
         public EscolherNumeroPerguntas(string idCategoria, string dificuldade)
         {
-            this.idCategoria = idCategoria;
-            this.dificuldade = dificuldade;
+            obj = new Total_EscolherNumeroPerguntas(idCategoria, dificuldade);
             InitializeComponent();
         }
 
-        //static int pontuacao = 0;
-        
-
         private async void NumeroPerguntasEscolhida(object sender, RoutedEventArgs e)
+        {
+            string numeroPerguntas = await obj.NumeroPerguntasEscolhida(sender, e);
+            Game openGame = new Game(int.Parse(numeroPerguntas));
+            NavigationService.Navigate(openGame);
+        }
+
+    }
+
+    public class Total_EscolherNumeroPerguntas
+    {
+
+        public string IdCategoria { get; set; }
+        public string Dificuldade { get; set; }
+
+        public Total_EscolherNumeroPerguntas(string idCategoria, string dificuldade)
+        {
+            IdCategoria = idCategoria;
+            Dificuldade = dificuldade;
+        }
+        public async Task<string> NumeroPerguntasEscolhida(object sender, RoutedEventArgs e)
         {
             Button senderButton = sender as Button;
             string numeroPerguntas = senderButton.Name.Remove(0, 1);
 
-            string url = atualizaURL(numeroPerguntas, idCategoria , dificuldade);
+            string url = AtualizaURL(numeroPerguntas, IdCategoria, Dificuldade);
 
-            string result = await getData(url);
+            string result = await GetData(url);
 
             Enunciado.parseData(result);
 
-            Game openGame = new Game(Int32.Parse(numeroPerguntas));
-            this.NavigationService.Navigate(openGame);
-
+            return numeroPerguntas;
         }
-        public string atualizaURL(string nrPerguntas, string idCategoria, string dificuldade)
+        public string AtualizaURL(string nrPerguntas, string idCategoria, string dificuldade)
         {
-            
+            int numeroPerguntas, idCat;
+            bool isNumber = int.TryParse(nrPerguntas, out numeroPerguntas);
+            bool isNumberFromCat = int.TryParse(idCategoria, out idCat);
 
-            string url = getReplaceRegex(BaseUrl, "REPLACENUMBER", nrPerguntas);
+            if (!isNumber || !isNumberFromCat) throw new ArgumentException("Número inválido!");
 
-            url = getReplaceRegex(url, "REPLACE_CATEGORY", idCategoria);
+            string url = ReplaceString(BaseUrl, "REPLACENUMBER", nrPerguntas);
 
-            if (dificuldade != "random")
-            {
-                url = url + "&difficulty=" + dificuldade;
-            }
+            url = ReplaceString(url, "REPLACE_CATEGORY", idCategoria);
+
+            if (dificuldade != "random") url += "&difficulty=" + dificuldade;
             return url;
         }
     }

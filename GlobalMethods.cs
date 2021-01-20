@@ -1,5 +1,5 @@
-﻿using System.Net.Http;
-using System.Text.RegularExpressions;
+﻿using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace GlobalMethods
@@ -7,20 +7,19 @@ namespace GlobalMethods
     public static class GlobalMethods
     {
         public static string BaseUrl = "https://opentdb.com/api.php?amount=REPLACENUMBER&category=REPLACE_CATEGORY";    
-        public static async Task<string> getData( string url )
+        public static async Task<string> GetData( string url )
         {
+            if (string.IsNullOrEmpty(url)) throw new ArgumentException("URL inválido!");
+
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync(url);
             response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-            return responseBody;
+            return await response.Content.ReadAsStringAsync();
         }
 
-
-        public static string getReplaceRegex( string baseString, string expressionToReplace, string replacementValue )
+        public static string ReplaceString(string baseString, string expressionToReplace, string replacementValue)
         {
-            Regex rgx1 = new Regex(expressionToReplace);
-            return rgx1.Replace(baseString, replacementValue);
+            return baseString.Replace(expressionToReplace, replacementValue);
         }
     }
 }
