@@ -1,11 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using static GlobalMethods.GlobalMethods;
@@ -17,8 +10,8 @@ namespace QuizAppWPF
     /// </summary>
     public partial class EscolherNumeroPerguntas : Page
     {
-        private string idCategoria { get; set; }
-        private string dificuldade { get; set; }
+        public string idCategoria { get; set; }
+        public string dificuldade { get; set; }
         public EscolherNumeroPerguntas(string idCategoria, string dificuldade)
         {
             this.idCategoria = idCategoria;
@@ -44,7 +37,7 @@ namespace QuizAppWPF
             this.NavigationService.Navigate(openGame);
 
         }
-        private string atualizaURL(string nrPerguntas, string idCategoria, string dificuldade)
+        public string atualizaURL(string nrPerguntas, string idCategoria, string dificuldade)
         {
             
 
