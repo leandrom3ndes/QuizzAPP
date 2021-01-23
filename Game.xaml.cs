@@ -82,11 +82,7 @@ namespace QuizAppWPF
         {
             string objname = ( (Button) sender ).Name; 
 
-            if ( positions.Contains( objname ) )
-            {
-                if ( !hasPressed ) handleButtonPress( objname ); 
-                else { MessageBox.Show("Para de tentar aldrabar pallhaço"); }
-            }
+            if ( positions.Contains(objname) && !hasPressed ) handleButtonPress( objname ); 
 
             // other buttons which are not possible answers
             else
@@ -118,7 +114,7 @@ namespace QuizAppWPF
         
         private void HomeButtonPressed()
         {
-            stopCounter();
+            if ( dispatcherTimer != null ) stopCounter();
             MessageBox.Show("Os dados desta sessão foram eliminados.");
             PontuacaoGame.ClearStats();
             OptionMenu optionMenu1 = new OptionMenu();
@@ -127,7 +123,7 @@ namespace QuizAppWPF
 
         private void gameEnded()
         {
-            MessageBox.Show("A sua sessão chegou ao fim. Pressione Ok para descobrir a pontuação que obteve");
+            // MessageBox.Show("A sua sessão chegou ao fim. Pressione Ok para descobrir a pontuação que obteve");
             PontuacaoGame pontGame = new PontuacaoGame(Enunciado.pontuacaoMax, pontuacao);
             NavigationService.Navigate(pontGame);
         }
@@ -173,11 +169,8 @@ namespace QuizAppWPF
         private void ShowQuestion()
         {
             Question.Content = Enunciado.Questoes[enunciadoQ].value;
-            if(Enunciado.Questoes[enunciadoQ].type == "boolean")
-            {
-                ShowBooleanAnswer();
-            }
-            else if (Enunciado.Questoes[enunciadoQ].type == "multiple")
+            if(Enunciado.Questoes[enunciadoQ].type == "boolean") ShowBooleanAnswer();
+            else
             {
                 if (!C.IsVisible)
                 {
@@ -199,9 +192,9 @@ namespace QuizAppWPF
             Resposta primeiraResposta = Enunciado.Questoes[enunciadoQ].Respostas[0];
 
             // se a resposta correta for true, afirmo que o botão A possui a resposta correta
-            if ( primeiraResposta.correctAnswer) { correctAnswerPositionList[enunciadoQ] = "A"; }
+            if ( primeiraResposta.correctAnswer)  correctAnswerPositionList[enunciadoQ] = "A"; 
             
-            else { correctAnswerPositionList[enunciadoQ] = "B"; }
+            else  correctAnswerPositionList[enunciadoQ] = "B"; 
 
         }
 
@@ -214,10 +207,8 @@ namespace QuizAppWPF
             
             foreach ( Resposta resposta in Enunciado.Questoes[enunciadoQ].Respostas) //percorre as respoostas da questão atual
             {
-                if (resposta.correctAnswer) //mostrar resposta correta
-                {
-                    modifyDynamicButton(correctPosition, "new-value", resposta.value);
-                }
+                //mostrar resposta correta
+                if (resposta.correctAnswer) modifyDynamicButton(correctPosition, "new-value", resposta.value);
 
                 else //mostrar resposta incorreta
                 {
@@ -244,14 +235,9 @@ namespace QuizAppWPF
             // green background on correct button
             modifyDynamicButton(correctPosition, "green-background");
 
-            if (selectedAnswer != correctPosition)
-            {
-                modifyDynamicButton(selectedAnswer, "red-background");
-            }
-            else //atribuir pontuação
-            {
-                pontuacao += Enunciado.Questoes[enunciadoQ].pontuacao;
-            }
+            if (selectedAnswer != correctPosition) modifyDynamicButton(selectedAnswer, "red-background");
+            //atribuir pontuação
+            else pontuacao += Enunciado.Questoes[enunciadoQ].pontuacao;
             
             DisableButtons(selectedAnswer, correctPosition);
 
@@ -274,10 +260,7 @@ namespace QuizAppWPF
         {
             foreach (string i in positions)
             {
-                if (i != selectedanswser && i != correctanswer)
-                {
-                    modifyDynamicButton(i, "enable-disable", "false");
-                }
+                if (i != selectedanswser && i != correctanswer) modifyDynamicButton(i, "enable-disable", "false");
             }
         }
 
