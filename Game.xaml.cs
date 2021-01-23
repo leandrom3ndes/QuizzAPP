@@ -54,7 +54,7 @@ namespace QuizAppWPF
             TimerLabel.Width = 800; //volta à largura inicial
             var converter = new System.Windows.Media.BrushConverter();
             TimerLabel.Background = (Brush)converter.ConvertFromString("#FF8BC5B0"); //volta à cor inicial
-            EnableDisableButtons(true);
+            modifyAllButtons("enable-disable", "true");
         }
 
         private void timerCountdown(object sender, EventArgs e)
@@ -68,7 +68,7 @@ namespace QuizAppWPF
         private void counterTimeout()
         {
             stopCounter();
-            EnableDisableButtons(false);
+            modifyAllButtons("enable-disable", "false");
             Next.Visibility = Visibility.Visible;
         }
 
@@ -91,7 +91,7 @@ namespace QuizAppWPF
                 {
                     case "Next":
                         enunciadoQ++;
-                        EnableDisableButtons(true);
+                        modifyAllButtons("enable-disable", "true");
                         Next.Visibility = Visibility.Hidden;
 
                         if (enunciadoQ < questionsNumber) nextQuestion();
@@ -186,8 +186,9 @@ namespace QuizAppWPF
         {
             C.Visibility = Visibility.Hidden;
             D.Visibility = Visibility.Hidden;
-            A.Content = "True";
-            B.Content = "False";
+
+            modifyDynamicButton( "A" , "new-value", "True");
+            modifyDynamicButton( "B", "new-value", "False" );
 
             Resposta primeiraResposta = Enunciado.Questoes[enunciadoQ].Respostas[0];
 
@@ -238,14 +239,9 @@ namespace QuizAppWPF
             if (selectedAnswer != correctPosition) modifyDynamicButton(selectedAnswer, "red-background");
             //atribuir pontuação
             else pontuacao += Enunciado.Questoes[enunciadoQ].pontuacao;
-            
+
             DisableButtons(selectedAnswer, correctPosition);
 
-        }
-
-        private void EnableDisableButtons(bool value)
-        {
-            modifyAllButtons("enable-disable", value.ToString());
         }
 
         private void modifyAllButtons( string action, string value = null )
@@ -261,6 +257,7 @@ namespace QuizAppWPF
             foreach (string i in positions)
             {
                 if (i != selectedanswser && i != correctanswer) modifyDynamicButton(i, "enable-disable", "false");
+                else modifyDynamicButton(i, "enable-disable-click", "false" );
             }
         }
 
@@ -281,6 +278,8 @@ namespace QuizAppWPF
 
                 case "new-value":
                     dynamicButton.Content = value;
+                    // make button clickable when it gets a new value
+                    dynamicButton.IsHitTestVisible = true;
                     break;
 
                 case "enable-disable":
@@ -290,7 +289,9 @@ namespace QuizAppWPF
                 case "clear-background":
                     dynamicButton.ClearValue(BackgroundProperty);
                     break;
-
+                case "enable-disable-click":
+                    dynamicButton.IsHitTestVisible = bool.Parse(value);
+                    break;
             }
 
         }

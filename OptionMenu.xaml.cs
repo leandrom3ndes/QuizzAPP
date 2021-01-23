@@ -1,23 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace QuizAppWPF
 {
-    /// <summary>
-    /// Interação lógica para OptionMenu.xam
-    /// </summary>
     public partial class OptionMenu : Page
     {
         public OptionMenu()
@@ -31,13 +17,12 @@ namespace QuizAppWPF
             switch (objname)
             {
                 case "Jogo":
-                    this.NavigationService.Navigate( Enunciado.pageCategoria);
+                    NavigationService.Navigate( Enunciado.pageCategoria);
                     break;
                 case "Classificacao":
-                    this.NavigationService.Navigate(Enunciado.scoreMenu);
+                    NavigationService.Navigate(Enunciado.scoreMenu);
                     break;
                 case "Sair":
-                    MessageBox.Show("Obrigado e volte sempre!");
                     System.Windows.Application.Current.Shutdown();
                     break;
             }
