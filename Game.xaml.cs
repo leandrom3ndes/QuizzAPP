@@ -61,11 +61,8 @@ namespace QuizAppWPF
         {
             counterAtual--;
             TimerLabel.Width = counterAtual * 800 / counterMax;
-            if (counterAtual <=5)
-            {
-                TimerLabel.Background = Brushes.Red;
-            } 
-            if (counterAtual == 0) { counterTimeout(); }
+            if (counterAtual <=5) TimerLabel.Background = Brushes.Red;
+            if (counterAtual == 0) counterTimeout(); 
         }
 
         private void counterTimeout()
@@ -87,7 +84,7 @@ namespace QuizAppWPF
 
             if ( positions.Contains( objname ) )
             {
-                if ( !hasPressed ) { handleButtonPress( objname ); }
+                if ( !hasPressed ) handleButtonPress( objname ); 
                 else { MessageBox.Show("Para de tentar aldrabar pallhaço"); }
             }
 
@@ -101,9 +98,9 @@ namespace QuizAppWPF
                         EnableDisableButtons(true);
                         Next.Visibility = Visibility.Hidden;
 
-                        if (enunciadoQ < questionsNumber) { nextQuestion();}
+                        if (enunciadoQ < questionsNumber) nextQuestion();
 
-                        else { gameEnded(); }
+                        else gameEnded();
 
                         break;
 

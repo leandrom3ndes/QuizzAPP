@@ -27,6 +27,7 @@ namespace QuizAppWPF
 
     }
 
+    // for TDD
     public class Total_EscolherNumeroPerguntas
     {
 
@@ -46,8 +47,7 @@ namespace QuizAppWPF
             string url = AtualizaURL(numeroPerguntas, IdCategoria, Dificuldade);
 
             string result = await GetData(url);
-
-            Enunciado.parseData(result);
+            _ = new Enunciado(result);
 
             return numeroPerguntas;
         }
