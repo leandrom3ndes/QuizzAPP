@@ -19,32 +19,32 @@ namespace QuizAppWPF
     {
 
         DispatcherTimer dispatcherTimer;
-        private int questionsNumber { get; set; }
-        private static int pontuacao = 0;
-        static Random rand = new Random();//DateTime.Now.ToString().GetHashCode()
-        int enunciadoQ = 0; //número da pergunta que o utilizador se encontra
+        private int QuestionsNumber { get; set; }
+        private static int Pontuacao = 0;
+        private readonly static Random Rand = new Random();
+        private static int enunciadoQ = 0; //número da pergunta que o utilizador se encontra
         bool hasPressed = false;
         public static List<string> correctAnswerPositionList = new List<string>();
 
-        static int counterMax = 15;
-        static int counterAtual = counterMax;
+        private readonly static int CounterMax = 15;
+        private static int CounterAtual = CounterMax;
 
-        List<string> positions = new List<string>() { "A", "B", "C", "D" };
+        private readonly List<string> positions = new List<string>() { "A", "B", "C", "D" };
 
-        public Game(int questionsNumber)
+        public Game(int QuestionsNumber)
         {
-            this.questionsNumber = questionsNumber;
+            this.QuestionsNumber = QuestionsNumber;
             InitializeComponent();
         }
 
-        public static async Task<Task> pontuacao_usernameID()
+        private static async Task<Task> Pontuacao_usernameID()
         {
             CollectionReference coll = firedatabase.Collection("Scores");
             Dictionary<string, object> data1 = new Dictionary<string, object>()
             {
                 {"Username", Login.username},
                 {"categoria", EscolherNumeroPerguntas.globalObj.IdCategoria},
-                {"Pontuacao", pontuacao }
+                {"Pontuacao", Pontuacao }
             };
             await coll.AddAsync(data1);
             MessageBox.Show("Dados adicionados com sucesso!!");
@@ -53,45 +53,45 @@ namespace QuizAppWPF
         }
 
 
-        private void startTimer()
+        private void StartTimer()
         {
             dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Tick += new EventHandler(timerCountdown);
+            dispatcherTimer.Tick += new EventHandler(TimerCountdown);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
             TimerLabel.Width = 800; //volta à largura inicial
-            var converter = new System.Windows.Media.BrushConverter();
+            var converter = new BrushConverter();
             TimerLabel.Background = (Brush)converter.ConvertFromString("#FF8BC5B0"); //volta à cor inicial
-            modifyAllButtons("enable-disable", "true");
+            ModifyAllButtons("enable-disable", "true");
         }
 
-        private void timerCountdown(object sender, EventArgs e)
+        private void TimerCountdown(object sender, EventArgs e)
         {
-            counterAtual--;
-            TimerLabel.Width = counterAtual * 800 / counterMax;
-            if (counterAtual <= 10 && counterAtual > 5) TimerLabel.Background = Brushes.Yellow;
-            if (counterAtual <=5) TimerLabel.Background = Brushes.Red;
-            if (counterAtual == 0) counterTimeout(); 
+            CounterAtual--;
+            TimerLabel.Width = CounterAtual * 800 / CounterMax;
+            if (CounterAtual <= 10 && CounterAtual > 5) TimerLabel.Background = Brushes.Yellow;
+            if (CounterAtual <=5) TimerLabel.Background = Brushes.Red;
+            if (CounterAtual == 0) CounterTimeout(); 
         }
 
-        private void counterTimeout()
+        private void CounterTimeout()
         {
-            stopCounter();
-            modifyAllButtons("enable-disable", "false");
+            StopCounter();
+            ModifyAllButtons("enable-disable", "false");
             Next.Visibility = Visibility.Visible;
         }
 
-        private void stopCounter()
+        private void StopCounter()
         {
             dispatcherTimer.Stop();
-            counterAtual = counterMax;
+            CounterAtual = CounterMax;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string objname = ( (Button) sender ).Name; 
 
-            if ( positions.Contains(objname) && !hasPressed ) handleButtonPress( objname ); 
+            if ( positions.Contains(objname) && !hasPressed ) HandleButtonPress( objname ); 
 
             // other buttons which are not possible answers
             else
@@ -100,17 +100,17 @@ namespace QuizAppWPF
                 {
                     case "Next":
                         enunciadoQ++;
-                        modifyAllButtons("enable-disable", "true");
+                        ModifyAllButtons("enable-disable", "true");
                         Next.Visibility = Visibility.Hidden;
 
-                        if (enunciadoQ < questionsNumber) nextQuestion();
+                        if (enunciadoQ < QuestionsNumber) NextQuestion();
 
-                        else gameEnded();
+                        else GameEnded();
 
                         break;
 
                     case "Start":
-                        startGame();
+                        StartGame();
                         break;
 
                     case "HomeButton":
@@ -123,22 +123,24 @@ namespace QuizAppWPF
         
         private void HomeButtonPressed()
         {
-            if ( dispatcherTimer != null ) stopCounter();
+            if ( dispatcherTimer != null ) StopCounter();
             MessageBox.Show("Os dados desta sessão foram eliminados.");
             PontuacaoGame.ClearStats();
             OptionMenu optionMenu1 = new OptionMenu();
             NavigationService.Navigate(optionMenu1);
         }
 
-        private async void gameEnded()
+        private async void GameEnded()
         {
             // MessageBox.Show("A sua sessão chegou ao fim. Pressione Ok para descobrir a pontuação que obteve");
-            await pontuacao_usernameID();
-            PontuacaoGame pontGame = new PontuacaoGame(Enunciado.pontuacaoMax, pontuacao);
+            StartLoadingCursor();
+            await Pontuacao_usernameID();
+            StopLoadingCursor();
+            PontuacaoGame pontGame = new PontuacaoGame(Enunciado.pontuacaoMax, Pontuacao);
             NavigationService.Navigate(pontGame);
         }
 
-        private void startGame()
+        private void StartGame()
         {
             CreateRandomSequence();
             Start.Visibility = Visibility.Hidden;
@@ -147,20 +149,20 @@ namespace QuizAppWPF
             B.Visibility = Visibility.Visible;
             Question.Visibility = Visibility.Visible;
             TimerLabel.Visibility = Visibility.Visible;
-            startTimer();
+            StartTimer();
         }
 
-        private void nextQuestion()
+        private void NextQuestion()
         {
             hasPressed = false;
-            modifyAllButtons("clear-background");
+            ModifyAllButtons("clear-background");
             ShowQuestion();
-            startTimer();
+            StartTimer();
         }
 
-        private void handleButtonPress(string buttonPressed)
+        private void HandleButtonPress(string buttonPressed)
         {
-            stopCounter();
+            StopCounter();
             VerifyAnswer( buttonPressed );
             Next.Visibility = Visibility.Visible;
             hasPressed = true;
@@ -169,17 +171,17 @@ namespace QuizAppWPF
 
         private void CreateRandomSequence()
         {
-            for(int i = 0; i < questionsNumber; i++)
+            for(int i = 0; i < QuestionsNumber; i++)
             {
-                correctAnswerPositionList.Add(positions[rand.Next(0,4)]);  //adiciona a posição A,B,C ou D aleatoriamente numa lista 
+                correctAnswerPositionList.Add(positions[Rand.Next(0,4)]);  //adiciona a posição A,B,C ou D aleatoriamente numa lista 
             }
         }
         
 
         private void ShowQuestion()
         {
-            Question.Content = Enunciado.Questoes[enunciadoQ].value;
-            if(Enunciado.Questoes[enunciadoQ].type == "boolean") ShowBooleanAnswer();
+            Question.Content = Enunciado.Questoes[enunciadoQ].Value;
+            if(Enunciado.Questoes[enunciadoQ].Type == "boolean") ShowBooleanAnswer();
             else
             {
                 if (!C.IsVisible)
@@ -197,13 +199,13 @@ namespace QuizAppWPF
             C.Visibility = Visibility.Hidden;
             D.Visibility = Visibility.Hidden;
 
-            modifyDynamicButton( "A" , "new-value", "True");
-            modifyDynamicButton( "B", "new-value", "False" );
+            ModifyDynamicButton( "A" , "new-value", "True");
+            ModifyDynamicButton( "B", "new-value", "False" );
 
             Resposta primeiraResposta = Enunciado.Questoes[enunciadoQ].Respostas[0];
 
             // se a resposta correta for true, afirmo que o botão A possui a resposta correta
-            if ( primeiraResposta.correctAnswer)  correctAnswerPositionList[enunciadoQ] = "A"; 
+            if ( primeiraResposta.CorrectAnswer)  correctAnswerPositionList[enunciadoQ] = "A"; 
             
             else  correctAnswerPositionList[enunciadoQ] = "B"; 
 
@@ -219,7 +221,7 @@ namespace QuizAppWPF
             foreach ( Resposta resposta in Enunciado.Questoes[enunciadoQ].Respostas) //percorre as respoostas da questão atual
             {
                 //mostrar resposta correta
-                if (resposta.correctAnswer) modifyDynamicButton(correctPosition, "new-value", resposta.value);
+                if (resposta.CorrectAnswer) ModifyDynamicButton(correctPosition, "new-value", resposta.Value);
 
                 else //mostrar resposta incorreta
                 {
@@ -235,7 +237,7 @@ namespace QuizAppWPF
         // displays the content of all incorrect answers
         private void ShowIncorretAnswer(Resposta resposta, List<string> Incorretpositions, int j)
         {
-            modifyDynamicButton(Incorretpositions[j], "new-value", resposta.value);
+            ModifyDynamicButton(Incorretpositions[j], "new-value", resposta.Value);
 
         }
 
@@ -244,21 +246,21 @@ namespace QuizAppWPF
             string correctPosition = correctAnswerPositionList[enunciadoQ];
 
             // green background on correct button
-            modifyDynamicButton(correctPosition, "green-background");
+            ModifyDynamicButton(correctPosition, "green-background");
 
-            if (selectedAnswer != correctPosition) modifyDynamicButton(selectedAnswer, "red-background");
+            if (selectedAnswer != correctPosition) ModifyDynamicButton(selectedAnswer, "red-background");
             //atribuir pontuação
-            else pontuacao += Enunciado.Questoes[enunciadoQ].pontuacao;
+            else Pontuacao += Enunciado.Questoes[enunciadoQ].Pontuacao;
 
             DisableButtons(selectedAnswer, correctPosition);
 
         }
 
-        private void modifyAllButtons( string action, string value = null )
+        private void ModifyAllButtons( string action, string value = null )
         {
             foreach (string buttonName in positions)
             {
-                modifyDynamicButton(buttonName, action, value);
+                ModifyDynamicButton(buttonName, action, value);
             }
         }
 
@@ -266,15 +268,15 @@ namespace QuizAppWPF
         {
             foreach (string i in positions)
             {
-                if (i != selectedanswser && i != correctanswer) modifyDynamicButton(i, "enable-disable", "false");
-                else modifyDynamicButton(i, "enable-disable-click", "false" );
+                if (i != selectedanswser && i != correctanswer) ModifyDynamicButton(i, "enable-disable", "false");
+                else ModifyDynamicButton(i, "enable-disable-click", "false" );
             }
         }
 
-        private void modifyDynamicButton(string name, string action, string value = null)
+        private void ModifyDynamicButton(string name, string action, string value = null)
         {
             object dynamicObject = FindName(name);
-            Button dynamicButton = getButton(dynamicObject);
+            Button dynamicButton = GetButton(dynamicObject);
 
             switch ( action )
             {
@@ -306,7 +308,7 @@ namespace QuizAppWPF
 
         }
 
-        private Button getButton(object buttonObject)
+        private Button GetButton(object buttonObject)
         {
             return ((Button)buttonObject);
         }

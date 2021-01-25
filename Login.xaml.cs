@@ -6,6 +6,7 @@ using FireSharp.Config;
 using FireSharp.Response;
 using FireSharp.Interfaces;
 using static GlobalMethods.GlobalMethods;
+using System.Windows.Input;
 
 namespace QuizAppWPF
 {
@@ -24,13 +25,7 @@ namespace QuizAppWPF
             InitializeComponent();
         }
 
-        IFirebaseConfig ifc = new FirebaseConfig()
-        {
-            AuthSecret = "fBAXrDx2fkycRdUVuFTdofM73afM5gfa5rbzTXry",
-            BasePath = "https://quizz-login-default-rtdb.europe-west1.firebasedatabase.app/"
-        };
-
-        IFirebaseClient client;
+        private IFirebaseClient client;
             
         private async void LoginBtnClick(object sender, RoutedEventArgs e)
         {
@@ -38,7 +33,9 @@ namespace QuizAppWPF
             switch (objname)
             {
                 case "LoginBtn":
+                    StartLoadingCursor();
                     await login();
+                    StopLoadingCursor();
                     firebaseConnection();
                     break;
                 case "regBtn":

@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 using FireSharp.Config;
 using FireSharp.Response;
 using FireSharp.Interfaces;
+
+using static GlobalMethods.GlobalMethods;
 
 namespace QuizAppWPF
 {
@@ -28,13 +20,8 @@ namespace QuizAppWPF
         {
             InitializeComponent();
         }
-         IFirebaseConfig ifc = new FirebaseConfig()
-        {
-            AuthSecret = "fBAXrDx2fkycRdUVuFTdofM73afM5gfa5rbzTXry",
-            BasePath = "https://quizz-login-default-rtdb.europe-west1.firebasedatabase.app/"
-        };
 
-        IFirebaseClient client;
+        private IFirebaseClient client;
 
         private async void RegBtnClick(object sender, RoutedEventArgs e)
         {
@@ -55,7 +42,8 @@ namespace QuizAppWPF
 
         private async Task<Task> Register()
         {
-
+            StartLoadingCursor();
+            
             try
             {
                 client = new FireSharp.FirebaseClient(ifc);
@@ -72,6 +60,7 @@ namespace QuizAppWPF
                string.IsNullOrWhiteSpace(cursoTbox.Text) ||
                string.IsNullOrWhiteSpace(nrAlunoTbox.Text))
             {
+                StopLoadingCursor();
                 MessageBox.Show("Preencha todos os campos!");
                 return Task.CompletedTask;
             }
@@ -93,11 +82,13 @@ namespace QuizAppWPF
 
             if (Utilizador.IsEqualName(ResUser, user))
             {
+                StopLoadingCursor();
                 MessageBox.Show("O utilizador já existe! Escolha outro nome.");
             }
             else
             {
                 await client.SetAsync(@"Utilizadores/" + UsernameTbox.Text, user);
+                StopLoadingCursor();
                 MessageBox.Show("Registo efetuado com sucesso!");
                 NavigationService.Navigate(Enunciado.loginMenu);
             }

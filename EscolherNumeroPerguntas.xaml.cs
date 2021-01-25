@@ -11,19 +11,19 @@ namespace QuizAppWPF
     /// </summary>
     public partial class EscolherNumeroPerguntas : Page
     {
-        public Total_EscolherNumeroPerguntas obj { get; set; }
+        public Total_EscolherNumeroPerguntas Obj { get; set; }
         public static Total_EscolherNumeroPerguntas globalObj;
 
         public EscolherNumeroPerguntas(string idCategoria, string dificuldade)
         {
-            obj = new Total_EscolherNumeroPerguntas(idCategoria, dificuldade);
-            globalObj = obj;
+            Obj = new Total_EscolherNumeroPerguntas(idCategoria, dificuldade);
+            globalObj = Obj;
             InitializeComponent();
         }
 
         private async void NumeroPerguntasEscolhida(object sender, RoutedEventArgs e)
         {
-            string numeroPerguntas = await obj.NumeroPerguntasEscolhida(sender, e);
+            string numeroPerguntas = await Obj.NumeroPerguntasEscolhida(sender, e);
             Game openGame = new Game(int.Parse(numeroPerguntas));
             NavigationService.Navigate(openGame);
         }
@@ -56,9 +56,8 @@ namespace QuizAppWPF
         }
         public string AtualizaURL(string nrPerguntas, string idCategoria, string dificuldade)
         {
-            int numeroPerguntas, idCat;
-            bool isNumber = int.TryParse(nrPerguntas, out numeroPerguntas);
-            bool isNumberFromCat = int.TryParse(idCategoria, out idCat);
+            bool isNumber = int.TryParse(nrPerguntas, out int _);
+            bool isNumberFromCat = int.TryParse(idCategoria, out int _);
 
             if (!isNumber || !isNumberFromCat) throw new ArgumentException("Número inválido!");
 
