@@ -8,13 +8,27 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Score">
     <Grid Background="#FF272727">
-        <Label Name="title" Content="Pontuações obtidas" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top" Height="68" Width="401" FontSize="36" Background="{x:Null}" FontFamily="Showcard Gothic" Foreground="White" Visibility="Hidden"/>
-        <Button Name="ShowScore" Content="Ver Classificação" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Margin="302,168,0,0" Height="99" Click="Button_Click" FontWeight="Bold" FontSize="22" Background="#FF5AFFCB"/>
-        <ListView Margin="32,107,31,25" Name="lvDataBinding" Visibility="Hidden" Background="#FF444444" Foreground="White" FontWeight="Bold"></ListView>
+        <Label Name="title" Content="Pontuações obtidas" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top" Height="68" Width="401" FontSize="36" Background="{x:Null}" FontFamily="Showcard Gothic" Foreground="White" Visibility="Visible"/>
+        <ListView Margin="32,107,31,25" Name="lvDataBinding" Background="#FF444444" Foreground="White" FontWeight="Bold" Visibility="Visible"></ListView>
         <Button Name="HomeButton" Click="Button_Click" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Margin="695,4,0,0" Height="74" BorderBrush="{x:Null}" Foreground="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="home.png" Stretch="UniformToFill"/>
             </Button.Background>
         </Button>
+        <ComboBox Name="comboCategoria" HorizontalAlignment="Left" Margin="237,78,0,0" VerticalAlignment="Top" Width="133" SelectionChanged="ComboCategoria_SelectionChanged">
+            <ComboBoxItem Tag="0" IsSelected="True">Todas as categorias</ComboBoxItem>
+            <ComboBoxItem Tag="19">Matemática</ComboBoxItem>
+            <ComboBoxItem Tag="18" >Informática</ComboBoxItem>
+            <ComboBoxItem Tag="30" >Ciências</ComboBoxItem>
+            <ComboBoxItem Tag="21" >Desporto</ComboBoxItem>
+            <ComboBoxItem Tag="25" >Arte</ComboBoxItem>
+            <ComboBoxItem Tag="23" >História</ComboBoxItem>
+        </ComboBox>
+        <ComboBox Name="comboUserGeral" HorizontalAlignment="Left" Margin="446,78,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboUserGeral_SelectionChanged">
+            <ComboBoxItem Tag="user" IsSelected="True">Utilizador</ComboBoxItem>
+            <ComboBoxItem Tag="geral">Geral</ComboBoxItem>
+
+        </ComboBox>
+        <Button Name="ShowScore" Content="Pesquisar" HorizontalAlignment="Left" Margin="48,78,0,0" VerticalAlignment="Top" Width="104" Click="Button_Click" Height="22" FontWeight="Bold" FontSize="12" Background="#FF5AFFCB"/>
     </Grid>
 </Page>
