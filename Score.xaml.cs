@@ -20,7 +20,7 @@ namespace QuizAppWPF
 
         private async Task getScores()
         {
-            string userNameAux = "leandro";
+            string userNameAux = Login.username;
             CollectionReference coll = firedatabase.Collection("Scores");
             Query scoresQuery = coll.WhereEqualTo("Username", userNameAux); //meter aqui em vez do nome do bolha, colocar 
             QuerySnapshot scoresSnap = await scoresQuery.GetSnapshotAsync();

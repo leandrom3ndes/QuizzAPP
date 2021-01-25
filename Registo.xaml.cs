@@ -53,7 +53,7 @@ namespace QuizAppWPF
 
         }
 
-        private async Task Register()
+        private async Task<Task> Register()
         {
 
             try
@@ -73,12 +73,12 @@ namespace QuizAppWPF
                string.IsNullOrWhiteSpace(nrAlunoTbox.Text))
             {
                 MessageBox.Show("Preencha todos os campos!");
-                return;
+                return Task.CompletedTask;
             }
 
             #endregion
             #endregion
-            FirebaseResponse res = client.Get(@"Utilizadores/" + UsernameTbox.Text);
+            FirebaseResponse res = await client.GetAsync(@"Utilizadores/" + UsernameTbox.Text);
             Utilizador ResUser = res.ResultAs<Utilizador>();    // Resultado da base de dados
 
             Utilizador user = new Utilizador()
@@ -97,11 +97,13 @@ namespace QuizAppWPF
             }
             else
             {
-                client.Set(@"Utilizadores/" + UsernameTbox.Text, user);
+                await client.SetAsync(@"Utilizadores/" + UsernameTbox.Text, user);
                 MessageBox.Show("Registo efetuado com sucesso!");
                 NavigationService.Navigate(Enunciado.loginMenu);
             }
 
+
+            return Task.CompletedTask;
         }
 
     }

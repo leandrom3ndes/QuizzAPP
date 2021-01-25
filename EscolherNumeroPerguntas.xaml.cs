@@ -11,10 +11,13 @@ namespace QuizAppWPF
     /// </summary>
     public partial class EscolherNumeroPerguntas : Page
     {
-        Total_EscolherNumeroPerguntas obj;
+        public Total_EscolherNumeroPerguntas obj { get; set; }
+        public static Total_EscolherNumeroPerguntas globalObj;
+
         public EscolherNumeroPerguntas(string idCategoria, string dificuldade)
         {
             obj = new Total_EscolherNumeroPerguntas(idCategoria, dificuldade);
+            globalObj = obj;
             InitializeComponent();
         }
 

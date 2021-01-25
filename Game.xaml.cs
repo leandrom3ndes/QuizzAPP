@@ -1,23 +1,14 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Timers;
 using System.Windows.Threading;
+using Google.Cloud.Firestore;
+using static GlobalMethods.GlobalMethods;
 
 namespace QuizAppWPF
 {
@@ -26,9 +17,10 @@ namespace QuizAppWPF
     /// </summary>
     public partial class Game : Page
     {
+
         DispatcherTimer dispatcherTimer;
         private int questionsNumber { get; set; }
-        int pontuacao = 0;
+        private static int pontuacao = 0;
         static Random rand = new Random();//DateTime.Now.ToString().GetHashCode()
         int enunciadoQ = 0; //número da pergunta que o utilizador se encontra
         bool hasPressed = false;
@@ -44,6 +36,22 @@ namespace QuizAppWPF
             this.questionsNumber = questionsNumber;
             InitializeComponent();
         }
+
+        public static async Task<Task> pontuacao_usernameID()
+        {
+            CollectionReference coll = firedatabase.Collection("Scores");
+            Dictionary<string, object> data1 = new Dictionary<string, object>()
+            {
+                {"Username", Login.username},
+                {"categoria", EscolherNumeroPerguntas.globalObj.IdCategoria},
+                {"Pontuacao", pontuacao }
+            };
+            await coll.AddAsync(data1);
+            MessageBox.Show("Dados adicionados com sucesso!!");
+
+            return Task.CompletedTask;
+        }
+
 
         private void startTimer()
         {
@@ -122,9 +130,10 @@ namespace QuizAppWPF
             NavigationService.Navigate(optionMenu1);
         }
 
-        private void gameEnded()
+        private async void gameEnded()
         {
             // MessageBox.Show("A sua sessão chegou ao fim. Pressione Ok para descobrir a pontuação que obteve");
+            await pontuacao_usernameID();
             PontuacaoGame pontGame = new PontuacaoGame(Enunciado.pontuacaoMax, pontuacao);
             NavigationService.Navigate(pontGame);
         }

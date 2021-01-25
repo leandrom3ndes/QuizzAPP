@@ -16,6 +16,8 @@ namespace QuizAppWPF
 
     public partial class Login : Page
     {
+        public static string username { get; set; }
+
         public Login()
         {
             //await LoginBtn_Click_1(object sender, RoutedEventArgs e);
@@ -85,6 +87,7 @@ namespace QuizAppWPF
             //Caso os dados estejam corretos é redireccionado para a APP
             if (Utilizador.IsEqual(ResUser, CurUser))
             {
+                username = UsernameTbox.Text;
                 OptionMenu oP = new OptionMenu();
                 this.NavigationService.Navigate(oP);
             }
