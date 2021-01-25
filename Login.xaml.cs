@@ -91,7 +91,7 @@ namespace QuizAppWPF
             {
                 username = UsernameTbox.Text;
                 OptionMenu oP = new OptionMenu();
-                this.NavigationService.Navigate(oP);
+                NavigationService.Navigate(oP);
             }
 
             else
