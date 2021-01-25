@@ -22,10 +22,10 @@ namespace QuizAppWPF
         private FirebaseResponse res;
 
         public Login()
-        {
+        { 
             InitializeComponent();
         }
-     
+
         private async void LoginBtnClick(object sender, RoutedEventArgs e)
         {
             string objname = ((Button)sender).Name;
@@ -70,15 +70,11 @@ namespace QuizAppWPF
             }
             #endregion
             StartLoadingCursor();
-            FirebaseResponse res = await client.GetAsync(@"Utilizadores/" + UsernameTbox.Text);
+            res = await client.GetAsync(@"Utilizadores/" + UsernameTbox.Text);
             StopLoadingCursor();
-
-            res = client.Get(@"Utilizadores/" + UsernameTbox.Text);
             
             await VerifyLogin();
-
             return Task.CompletedTask;
-
         }
 
         private Task VerifyLogin()
