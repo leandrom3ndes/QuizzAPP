@@ -45,6 +45,7 @@ namespace GlobalMethods
             firedatabase = FirestoreDb.Create("quizz-login");
         }
 
+        //Ligação com a Realtime Database
         public static IFirebaseConfig ifc = new FirebaseConfig()
         {
             AuthSecret = "fBAXrDx2fkycRdUVuFTdofM73afM5gfa5rbzTXry",
