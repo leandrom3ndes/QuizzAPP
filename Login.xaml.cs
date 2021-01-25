@@ -6,6 +6,7 @@ using FireSharp.Config;
 using FireSharp.Response;
 using FireSharp.Interfaces;
 using static GlobalMethods.GlobalMethods;
+using System.Windows.Input;
 
 namespace QuizAppWPF
 {
@@ -16,19 +17,15 @@ namespace QuizAppWPF
 
     public partial class Login : Page
     {
+        public static string username { get; set; }
+
         public Login()
         {
             //await LoginBtn_Click_1(object sender, RoutedEventArgs e);
             InitializeComponent();
         }
 
-        IFirebaseConfig ifc = new FirebaseConfig()
-        {
-            AuthSecret = "fBAXrDx2fkycRdUVuFTdofM73afM5gfa5rbzTXry",
-            BasePath = "https://quizz-login-default-rtdb.europe-west1.firebasedatabase.app/"
-        };
-
-        IFirebaseClient client;
+        private IFirebaseClient client;
             
         private async void LoginBtnClick(object sender, RoutedEventArgs e)
         {
@@ -36,7 +33,9 @@ namespace QuizAppWPF
             switch (objname)
             {
                 case "LoginBtn":
+                    StartLoadingCursor();
                     await login();
+                    StopLoadingCursor();
                     firebaseConnection();
                     break;
                 case "regBtn":
@@ -53,7 +52,7 @@ namespace QuizAppWPF
             this.NavigationService.Navigate(registo);
         }
 
-        private async Task login()
+        private async Task<Task> login()
         {
 
             try
@@ -69,11 +68,13 @@ namespace QuizAppWPF
                string.IsNullOrWhiteSpace(passTbox.Password))
             {
                 MessageBox.Show("Preencha todos os campos!");
-                return;
+                return Task.CompletedTask;
             }
             #endregion
+            StartLoadingCursor();
+            FirebaseResponse res = await client.GetAsync(@"Utilizadores/" + UsernameTbox.Text);
+            StopLoadingCursor();
 
-            FirebaseResponse res = client.Get(@"Utilizadores/" + UsernameTbox.Text);
             Utilizador ResUser = res.ResultAs<Utilizador>();    // Resultado da base de dados
 
             Utilizador CurUser = new Utilizador()               // Informação do utilizador
@@ -85,6 +86,7 @@ namespace QuizAppWPF
             //Caso os dados estejam corretos é redireccionado para a APP
             if (Utilizador.IsEqual(ResUser, CurUser))
             {
+                username = UsernameTbox.Text;
                 OptionMenu oP = new OptionMenu();
                 this.NavigationService.Navigate(oP);
             }
@@ -94,6 +96,8 @@ namespace QuizAppWPF
                 Utilizador.ShowError();
             }
 
+
+            return Task.CompletedTask;
         }
     
     }

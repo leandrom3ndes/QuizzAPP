@@ -3,6 +3,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Google.Cloud.Firestore;
 using System;
+using System.Windows.Input;
+using FireSharp.Interfaces;
+using FireSharp.Config;
 
 namespace GlobalMethods
 {
@@ -42,6 +45,21 @@ namespace GlobalMethods
             firedatabase = FirestoreDb.Create("quizz-login");
         }
 
+        public static IFirebaseConfig ifc = new FirebaseConfig()
+        {
+            AuthSecret = "fBAXrDx2fkycRdUVuFTdofM73afM5gfa5rbzTXry",
+            BasePath = "https://quizz-login-default-rtdb.europe-west1.firebasedatabase.app/"
+        };
+
+        public static void StartLoadingCursor()
+        {
+            Mouse.OverrideCursor = Cursors.Wait;
+        }
+
+        public static void StopLoadingCursor()
+        {
+            Mouse.OverrideCursor = null;
+        }
     }
 }
 

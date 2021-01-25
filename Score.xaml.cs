@@ -22,7 +22,7 @@ namespace QuizAppWPF
 
         private async Task getScores()
         {
-            string userNameAux = "pontes";
+            string userNameAux = Login.username;
             CollectionReference coll = firedatabase.Collection("Scores");
             Query scoresQuery;
             if (searchTypeSelected == "user")

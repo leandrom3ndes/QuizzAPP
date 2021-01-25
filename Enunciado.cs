@@ -51,27 +51,27 @@ namespace QuizAppWPF
     }
     public class Resposta
     {
-        public string value { get; set; }
-        public bool correctAnswer { get; set; }
+        public string Value { get; set; }
+        public bool CorrectAnswer { get; set; }
         public Resposta(string value, bool correctAnswer)
         {
-            this.value = value;
-            this.correctAnswer = correctAnswer;
+            Value = value;
+            CorrectAnswer = correctAnswer;
         }
 
     }
     public class Questao
     {
-        public string value { get; set; }
-        public int pontuacao { get; set; }
-        public string type { get; set; }
+        public string Value { get; set; }
+        public int Pontuacao { get; set; }
+        public string Type { get; set; }
         public List<Resposta> Respostas { get; set; }
         public Questao(string value, int pontuacao, List<Resposta> Respostas, string type)
         {
-            this.value = value;
-            this.pontuacao = pontuacao;
+            Value = value;
+            Pontuacao = pontuacao;
             this.Respostas = Respostas;
-            this.type = type;
+            Type = type;
         }
     }
 }
