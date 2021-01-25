@@ -52,7 +52,7 @@ namespace QuizAppWPF
             this.NavigationService.Navigate(registo);
         }
 
-        private async Task login()
+        private async Task<Task> login()
         {
 
             try
@@ -68,11 +68,13 @@ namespace QuizAppWPF
                string.IsNullOrWhiteSpace(passTbox.Password))
             {
                 MessageBox.Show("Preencha todos os campos!");
-                return;
+                return Task.CompletedTask;
             }
             #endregion
+            StartLoadingCursor();
+            FirebaseResponse res = await client.GetAsync(@"Utilizadores/" + UsernameTbox.Text);
+            StopLoadingCursor();
 
-            FirebaseResponse res = client.Get(@"Utilizadores/" + UsernameTbox.Text);
             Utilizador ResUser = res.ResultAs<Utilizador>();    // Resultado da base de dados
 
             Utilizador CurUser = new Utilizador()               // Informação do utilizador
@@ -94,6 +96,8 @@ namespace QuizAppWPF
                 Utilizador.ShowError();
             }
 
+
+            return Task.CompletedTask;
         }
     
     }
