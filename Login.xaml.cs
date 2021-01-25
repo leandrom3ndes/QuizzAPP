@@ -69,6 +69,9 @@ namespace QuizAppWPF
                 MessageBox.Show("Preencha todos os campos!");
             }
             #endregion
+            StartLoadingCursor();
+            FirebaseResponse res = await client.GetAsync(@"Utilizadores/" + UsernameTbox.Text);
+            StopLoadingCursor();
 
             res = client.Get(@"Utilizadores/" + UsernameTbox.Text);
             

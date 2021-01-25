@@ -17,23 +17,54 @@ namespace QuizAppWPF
         {
             InitializeComponent();
         }
+        string categoriaSelected = "";
+        string searchTypeSelected = "";
 
         private async Task getScores()
         {
             string userNameAux = Login.username;
             CollectionReference coll = firedatabase.Collection("Scores");
-            Query scoresQuery = coll.WhereEqualTo("Username", userNameAux); //meter aqui em vez do nome do bolha, colocar 
+            Query scoresQuery;
+            if (searchTypeSelected == "user")
+            {
+                if (categoriaSelected == "0")
+                {
+                    scoresQuery = coll.WhereEqualTo("Username", userNameAux).OrderBy("Pontuacao"); //todas as classificações obtidas pelo utilizador ordenada por pontuação crescente
+                }
+                else
+                {
+                    scoresQuery = coll.WhereEqualTo("Username", userNameAux).WhereEqualTo("categoria", categoriaSelected).OrderBy("Pontuacao"); //classificações obtidas pelo utilizador na categoria selecionada ordenada por pontuação crescente
+                }
+            }
+            else
+            {
+                if (categoriaSelected == "0")
+                {
+                    scoresQuery = coll.OrderBy("Pontuacao"); //classificação geral ordenada por pontuação crescente
+                }
+                else
+                {
+                    scoresQuery = coll.WhereEqualTo("categoria", categoriaSelected).OrderBy("Pontuacao"); //classificação geral da categoria escolhida ordenada por pontuação crescente
+                }
+            }
             QuerySnapshot scoresSnap = await scoresQuery.GetSnapshotAsync();
-            //QuerySnapshot scoresSnap = await coll.GetSnapshotAsync();
             List<string> items = new List<string>();
             int pontuacao;
             string categoria;
-            //foreach (DocumentSnapshot document in scoresSnap.Documents)
+            string utilizadorDoc;
             foreach (DocumentSnapshot document in scoresSnap.Documents)
             {
                 pontuacao = document.GetValue<int>("Pontuacao");
                 categoria = document.GetValue<string>("categoria");
-                items.Add("Pontuação: " + pontuacao.ToString() + "             " + "Categoria: " + categoria);
+                utilizadorDoc = document.GetValue<string>("Username");
+                if (searchTypeSelected == "user")
+                {
+                    items.Add("Pontuação: " + pontuacao.ToString());// + "             " + "Categoria: " + categoria);
+                }
+                else
+                {
+                    items.Add("Pontuação: " + pontuacao.ToString() + "             " + "Utilizador: " + utilizadorDoc);
+                }
             }
             lvDataBinding.ItemsSource = items;
         }
@@ -43,17 +74,23 @@ namespace QuizAppWPF
             string objname = ((Button)sender).Name;
             switch (objname)
             {
-                case "ShowScore":
-                    await getScores();
-                    title.Visibility = Visibility.Visible;
-                    lvDataBinding.Visibility = Visibility.Visible;
-                    break;
                 case "HomeButton":
-                    title.Visibility = Visibility.Hidden;
-                    lvDataBinding.Visibility = Visibility.Hidden;
                     NavigationService.Navigate(optMenu);
                     break;
+                case "ShowScore":
+                    await getScores();
+                    break;
             }
+        }
+
+        private void ComboCategoria_SelectionChanged(object sender, SelectionChangedEventArgs e) //atualiza variável quando altera valor da comboBox
+        {
+            categoriaSelected = ((ComboBoxItem)comboCategoria.SelectedItem).Tag.ToString();
+        }
+
+        private void ComboUserGeral_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            searchTypeSelected = ((ComboBoxItem)comboUserGeral.SelectedItem).Tag.ToString();
         }
     }
 }
