@@ -21,6 +21,7 @@ namespace QuizAppWPF
         DispatcherTimer dispatcherTimer;
         private int QuestionsNumber { get; set; }
         private static int Pontuacao = 0;
+        private static int RespostasCertas = 0;
         private readonly static Random Rand = new Random();
         private static int enunciadoQ = 0; //número da pergunta que o utilizador se encontra
         bool hasPressed = false;
@@ -144,7 +145,7 @@ namespace QuizAppWPF
             StartLoadingCursor();
             await Pontuacao_usernameID();
             StopLoadingCursor();
-            PontuacaoGame pontGame = new PontuacaoGame(Enunciado.pontuacaoMax, Pontuacao);
+            PontuacaoGame pontGame = new PontuacaoGame(RespostasCertas, QuestionsNumber);
             NavigationService.Navigate(pontGame);
         }
 
@@ -258,7 +259,11 @@ namespace QuizAppWPF
 
             if (selectedAnswer != correctPosition) ModifyDynamicButton(selectedAnswer, "red-background");
             //atribuir pontuação
-            else Pontuacao += Enunciado.Questoes[enunciadoQ].Pontuacao;
+            else
+            {
+                Pontuacao += Enunciado.Questoes[enunciadoQ].Pontuacao;
+                RespostasCertas += 1;
+            }
 
             DisableButtons(selectedAnswer, correctPosition);
 

@@ -19,6 +19,7 @@ namespace QuizAppWPF
         }
 
         private IFirebaseClient client;
+        private FirebaseResponse res;
 
         private async void RegBtnClick(object sender, RoutedEventArgs e)
         {
@@ -64,9 +65,15 @@ namespace QuizAppWPF
 
             #endregion
             #endregion
-            FirebaseResponse res = await client.GetAsync(@"Utilizadores/" + UsernameTbox.Text);
-            Utilizador ResUser = res.ResultAs<Utilizador>();    // Resultado da base de dados
+            res = await client.GetAsync(@"Utilizadores/" + UsernameTbox.Text);
 
+            await InsertRealtime();
+
+            return Task.CompletedTask;
+        }
+
+        private async Task<Task> InsertRealtime()
+        {
             Utilizador user = new Utilizador()
             {
                 nomeUtilizador = UsernameTbox.Text,
@@ -74,9 +81,8 @@ namespace QuizAppWPF
                 Curso = TipoCbox.Text,
                 nrAluno = nrAlunoTbox.Text,
                 Password = passTbox.Password,
-               // userScores = null
             };
-
+            Utilizador ResUser = res.ResultAs<Utilizador>();    // Resultado da base de dados
             if (Utilizador.IsEqualName(ResUser, user))
             {
                 StopLoadingCursor();
@@ -89,11 +95,8 @@ namespace QuizAppWPF
                 MessageBox.Show("Registo efetuado com sucesso!");
                 NavigationService.Navigate(Enunciado.loginMenu);
             }
-
-
             return Task.CompletedTask;
         }
-
     }
 
 }
