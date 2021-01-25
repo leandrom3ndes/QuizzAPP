@@ -8,7 +8,13 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Score">
     <Grid Background="#FF272727">
-        <Label Content="Pontuações obtidas por si" HorizontalAlignment="Left" Margin="261,10,0,0" VerticalAlignment="Top" Height="43" Width="270" FontSize="24" Background="White" FontFamily="Showcard Gothic"/>
-        <Label Name="ShowScore" Content="Label" Background="White" FontSize="22" HorizontalAlignment="Left" Margin="41,159,0,0" VerticalAlignment="Top"/>
+        <Label Name="title" Content="Pontuações obtidas" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top" Height="68" Width="401" FontSize="36" Background="{x:Null}" FontFamily="Showcard Gothic" Foreground="White" Visibility="Hidden"/>
+        <Button Name="ShowScore" Content="Ver Classificação" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Margin="302,168,0,0" Height="99" Click="Button_Click" FontWeight="Bold" FontSize="22" Background="#FF5AFFCB"/>
+        <ListView Margin="32,107,31,25" Name="lvDataBinding" Visibility="Hidden" Background="#FF444444" Foreground="White" FontWeight="Bold"></ListView>
+        <Button Name="HomeButton" Click="Button_Click" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Margin="695,4,0,0" Height="74" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="home.png" Stretch="UniformToFill"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Page>

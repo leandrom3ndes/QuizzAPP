@@ -74,6 +74,4 @@ namespace QuizAppWPF
             this.type = type;
         }
     }
-
-
 }

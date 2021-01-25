@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using FireSharp.Config;
-using FireSharp.Response;
-using FireSharp.Interfaces;
+using Google.Cloud.Firestore;
+using static GlobalMethods.GlobalMethods;
 
 namespace QuizAppWPF
 {
@@ -26,13 +16,44 @@ namespace QuizAppWPF
         public Score()
         {
             InitializeComponent();
-            teste();
         }
 
-        private void teste()
+        private async Task getScores()
         {
-
+            string userNameAux = "leandro";
+            CollectionReference coll = firedatabase.Collection("Scores");
+            Query scoresQuery = coll.WhereEqualTo("Username", userNameAux); //meter aqui em vez do nome do bolha, colocar 
+            QuerySnapshot scoresSnap = await scoresQuery.GetSnapshotAsync();
+            //QuerySnapshot scoresSnap = await coll.GetSnapshotAsync();
+            List<string> items = new List<string>();
+            int pontuacao;
+            string categoria;
+            //foreach (DocumentSnapshot document in scoresSnap.Documents)
+            foreach (DocumentSnapshot document in scoresSnap.Documents)
+            {
+                pontuacao = document.GetValue<int>("Pontuacao");
+                categoria = document.GetValue<string>("categoria");
+                items.Add("Pontuação: " + pontuacao.ToString() + "             " + "Categoria: " + categoria);
+            }
+            lvDataBinding.ItemsSource = items;
         }
 
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string objname = ((Button)sender).Name;
+            switch (objname)
+            {
+                case "ShowScore":
+                    await getScores();
+                    title.Visibility = Visibility.Visible;
+                    lvDataBinding.Visibility = Visibility.Visible;
+                    break;
+                case "HomeButton":
+                    title.Visibility = Visibility.Hidden;
+                    lvDataBinding.Visibility = Visibility.Hidden;
+                    NavigationService.Navigate(optMenu);
+                    break;
+            }
+        }
     }
 }

@@ -61,6 +61,7 @@ namespace QuizAppWPF
         {
             counterAtual--;
             TimerLabel.Width = counterAtual * 800 / counterMax;
+            if (counterAtual <= 10 && counterAtual > 5) TimerLabel.Background = Brushes.Yellow;
             if (counterAtual <=5) TimerLabel.Background = Brushes.Red;
             if (counterAtual == 0) counterTimeout(); 
         }
