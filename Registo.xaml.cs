@@ -2,11 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-
-using FireSharp.Config;
 using FireSharp.Response;
 using FireSharp.Interfaces;
-
 using static GlobalMethods.GlobalMethods;
 
 namespace QuizAppWPF

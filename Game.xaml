@@ -39,7 +39,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button Name="HomeButton" Click="Button_Click" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Grid.Column="3" Margin="170.6,10,0,0" Height="74" Grid.RowSpan="2" BorderBrush="{x:Null}" Foreground="{x:Null}">
+        <Button Name="HomeButton" Click="Button_Click" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="62" Grid.Column="3" Margin="204,0,0,0" Height="56" BorderBrush="{x:Null}" Foreground="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="home.png" Stretch="UniformToFill"/>
             </Button.Background>

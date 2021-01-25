@@ -1,12 +1,9 @@
-﻿
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using FireSharp.Config;
 using FireSharp.Response;
 using FireSharp.Interfaces;
 using static GlobalMethods.GlobalMethods;
-using System.Windows.Input;
 
 namespace QuizAppWPF
 {

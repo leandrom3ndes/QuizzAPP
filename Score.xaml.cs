@@ -20,7 +20,7 @@ namespace QuizAppWPF
         string categoriaSelected = "";
         string searchTypeSelected = "";
 
-        private async Task getScores()
+        private async Task GetScores()
         {
             string userNameAux = Login.username;
             CollectionReference coll = firedatabase.Collection("Scores");
@@ -59,7 +59,7 @@ namespace QuizAppWPF
                 utilizadorDoc = document.GetValue<string>("Username");
                 if (searchTypeSelected == "user")
                 {
-                    items.Add("Pontuação: " + pontuacao.ToString());// + "             " + "Categoria: " + categoria);
+                    items.Add("Pontuação: " + pontuacao.ToString());
                 }
                 else
                 {
@@ -78,7 +78,9 @@ namespace QuizAppWPF
                     NavigationService.Navigate(optMenu);
                     break;
                 case "ShowScore":
-                    await getScores();
+                    StartLoadingCursor();
+                    await GetScores();
+                    StopLoadingCursor();
                     break;
             }
         }

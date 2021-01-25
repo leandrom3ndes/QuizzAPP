@@ -111,7 +111,15 @@ namespace QuizAppWPF
                         break;
 
                     case "Start":
-                        StartGame();
+                        if (Enunciado.Questoes.Count() <= 0)
+                        {
+                            MessageBox.Show("Lamentamos mas não possuímos perguntas suficientes para satisfazer o seu pedido, por favor tente novamente reduzindo o número de perguntas.");
+                            NavigationService.Navigate(optMenu);
+                        }
+                        else
+                        {
+                            StartGame();
+                        }
                         break;
 
                     case "HomeButton":
