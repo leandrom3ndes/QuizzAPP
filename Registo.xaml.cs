@@ -13,13 +13,13 @@ namespace QuizAppWPF
     /// </summary>
     public partial class Registo : Page
     {
+
+        private IFirebaseClient client;
+        private FirebaseResponse res;
         public Registo()
         {
             InitializeComponent();
         }
-
-        private IFirebaseClient client;
-        private FirebaseResponse res;
 
         private async void RegBtnClick(object sender, RoutedEventArgs e)
         {
