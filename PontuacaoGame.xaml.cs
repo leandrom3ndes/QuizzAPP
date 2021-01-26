@@ -35,6 +35,9 @@ namespace QuizAppWPF
         {
             Enunciado.Questoes.Clear();
             Game.correctAnswerPositionList.Clear();
+            Game.enunciadoQ = 0;
+            Game.RespostasCertas = 0;
+            Game.Pontuacao = 0;
             Enunciado.pontuacaoMax = 0;
         }
 

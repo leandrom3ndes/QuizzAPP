@@ -20,10 +20,10 @@ namespace QuizAppWPF
 
         DispatcherTimer dispatcherTimer;
         private int QuestionsNumber { get; set; }
-        private static int Pontuacao = 0;
-        private static int RespostasCertas = 0;
+        public static int Pontuacao { get; set; }  = 0;
+        public static int RespostasCertas { get; set; }  = 0;
         private readonly static Random Rand = new Random();
-        private static int enunciadoQ = 0; //número da pergunta que o utilizador se encontra
+        public static int enunciadoQ { get; set; } = 0; //número da pergunta que o utilizador se encontra
         bool hasPressed = false;
         public static List<string> correctAnswerPositionList = new List<string>();
 
