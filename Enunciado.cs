@@ -13,8 +13,21 @@ namespace QuizAppWPF
         public static Login loginMenu = new Login();
         //podemos colocar aqui todas as instancias das navegações, deixei o do login como exemplo
 
-        public static List<Questao> Questoes = new List<Questao>();
-        public static int pontuacaoMax = 0;
+        private readonly List<Questao> questoes = new List<Questao>();
+
+        public List<Questao> Questoes
+        {
+            get { return questoes;  }
+        }
+
+        private int pontuacaoMax = 0;
+
+        public int PontuacaoMax
+        {
+            get { return pontuacaoMax; }
+            set { pontuacaoMax = value; }
+        }
+
         private readonly static IDictionary<string, int> DifficultyValues = new Dictionary<string, int>() {
             { "easy", 1 },
             { "medium", 2 },
@@ -26,7 +39,7 @@ namespace QuizAppWPF
             ParseData(data);
         }
 
-        public static void ParseData(string data)
+        public void ParseData(string data)
         {
             JObject jobject = (JObject)JsonConvert.DeserializeObject(data);
             foreach (JObject result in jobject["results"])
@@ -43,7 +56,7 @@ namespace QuizAppWPF
                 // instantiate question ( with answers )  
                 int difficulty = DifficultyValues[(string)result["difficulty"]];
                 Questao questao = new Questao(System.Net.WebUtility.HtmlDecode((string)result["question"]), difficulty, ListaRespostas, (string)result["type"]);
-                Questoes.Add(questao);
+                questoes.Add(questao);
                 pontuacaoMax += difficulty;
 
             }

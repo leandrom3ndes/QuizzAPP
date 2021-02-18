@@ -23,7 +23,7 @@ namespace QuizAppWPF
         private async Task GetScores()
         {
             string userNameAux = Login.username;
-            CollectionReference coll = firedatabase.Collection("Scores");
+            CollectionReference coll = DatabaseAPI.firedatabase.Collection("Scores");
             Query scoresQuery;
             if (searchTypeSelected == "user")
             {
@@ -75,7 +75,7 @@ namespace QuizAppWPF
             switch (objname)
             {
                 case "HomeButton":
-                    NavigationService.Navigate(optMenu);
+                    NavigationService.Navigate(PageNavigation.optMenu);
                     break;
                 case "ShowScore":
                     StartLoadingCursor();

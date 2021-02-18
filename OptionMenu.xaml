@@ -9,7 +9,7 @@
       Title="OptionMenu">
 
     <Grid Background="#FF292929">
-        <Image Source="neonwallRed.jpg" Stretch="Fill"/>
+        <Image Source="Images/neonwallRed.jpg" Stretch="Fill"/>
 
         <Label Content="Quiz App" HorizontalAlignment="Center" Margin="237,0,230,0" VerticalAlignment="Top" Width="333" FlowDirection="RightToLeft" TextOptions.TextHintingMode="Animated" HorizontalContentAlignment="Center" FontSize="48" Foreground="#FFB94B4B" Height="92" FontFamily="Showcard Gothic" Background="{x:Null}"/>
         <Button x:Name="Jogo" Content="Iniciar jogo" HorizontalAlignment="Left" Margin="254,122,0,0" VerticalAlignment="Top" Width="305" Height="51" Click="Button_Click" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>

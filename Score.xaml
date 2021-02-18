@@ -12,7 +12,7 @@
         <ListView Margin="32,107,31,25" Name="lvDataBinding" Background="#FF444444" Foreground="White" FontWeight="Bold" Visibility="Visible"></ListView>
         <Button Name="HomeButton" Click="Button_Click" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Margin="695,4,0,0" Height="74" BorderBrush="{x:Null}" Foreground="{x:Null}">
             <Button.Background>
-                <ImageBrush ImageSource="home.png" Stretch="UniformToFill"/>
+                <ImageBrush ImageSource="Images/home.png" Stretch="UniformToFill"/>
             </Button.Background>
         </Button>
         <ComboBox Name="comboCategoria" HorizontalAlignment="Left" Margin="237,78,0,0" VerticalAlignment="Top" Width="133" SelectionChanged="ComboCategoria_SelectionChanged">

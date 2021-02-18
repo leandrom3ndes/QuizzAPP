@@ -13,6 +13,7 @@ namespace QuizAppWPF
     {
         public Total_EscolherNumeroPerguntas Obj { get; set; }
         public static Total_EscolherNumeroPerguntas globalObj;
+        private Enunciado enunciado;
 
         public EscolherNumeroPerguntas(string idCategoria, string dificuldade)
         {
@@ -23,8 +24,8 @@ namespace QuizAppWPF
 
         private async void NumeroPerguntasEscolhida(object sender, RoutedEventArgs e)
         {
-            string numeroPerguntas = await Obj.NumeroPerguntasEscolhida(sender, e);
-            Game openGame = new Game(int.Parse(numeroPerguntas));
+            enunciado = await Obj.NumeroPerguntasEscolhida(sender, e);
+            Game openGame = new Game(enunciado);
             NavigationService.Navigate(openGame);
         }
 
@@ -37,22 +38,24 @@ namespace QuizAppWPF
         public string IdCategoria { get; set; }
         public string Dificuldade { get; set; }
 
+        private Enunciado enunciado;
+
         public Total_EscolherNumeroPerguntas(string idCategoria, string dificuldade)
         {
             IdCategoria = idCategoria;
             Dificuldade = dificuldade;
         }
-        public async Task<string> NumeroPerguntasEscolhida(object sender, RoutedEventArgs e)
+        public async Task<Enunciado> NumeroPerguntasEscolhida(object sender, RoutedEventArgs e)
         {
             Button senderButton = sender as Button;
             string numeroPerguntas = senderButton.Name.Remove(0, 1);
 
             string url = AtualizaURL(numeroPerguntas, IdCategoria, Dificuldade);
 
-            string result = await GetData(url);
-            _ = new Enunciado(result);
+            string result = await TriviaInteractionAPI.GetData(url);
+            enunciado = new Enunciado(result);
 
-            return numeroPerguntas;
+            return enunciado;
         }
         public string AtualizaURL(string nrPerguntas, string idCategoria, string dificuldade)
         {
@@ -61,7 +64,7 @@ namespace QuizAppWPF
 
             if (!isNumber || !isNumberFromCat) throw new ArgumentException("Número inválido!");
 
-            string url = ReplaceString(BaseUrl, "REPLACENUMBER", nrPerguntas);
+            string url = ReplaceString(TriviaInteractionAPI.BaseUrl, "REPLACENUMBER", nrPerguntas);
 
             url = ReplaceString(url, "REPLACE_CATEGORY", idCategoria);
 

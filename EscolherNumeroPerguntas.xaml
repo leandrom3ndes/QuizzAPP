@@ -12,7 +12,7 @@
             <ColumnDefinition Width="277*"/>
             <ColumnDefinition Width="123*"/>
         </Grid.ColumnDefinitions>
-        <Image Source="neonWall.jpg" Stretch="Fill" Grid.ColumnSpan="2" Margin="0,0,0,-0.4"/>
+        <Image Source="Images/neonWall.jpg" Stretch="Fill" Grid.ColumnSpan="2" Margin="0,0,0,-0.4"/>
         <Button Name="N5" Click="NumeroPerguntasEscolhida" Content="5" HorizontalAlignment="Left" Margin="305,291,0,0" VerticalAlignment="Top" Width="163" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
         <Button Name="N10" Click="NumeroPerguntasEscolhida" Content="10" HorizontalAlignment="Left" Margin="305,107,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>
         <Button Name="N20" Click="NumeroPerguntasEscolhida" Content="20" HorizontalAlignment="Left" Margin="306,199,0,0" VerticalAlignment="Top" Width="162" Height="57" FontSize="22" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="#FFF30A0A"/>

@@ -30,9 +30,9 @@ namespace QuizAppWPF
             {
                 case "LoginBtn":
                     StartLoadingCursor();
-                    await login();
+                    await AsyncLogin();
                     StopLoadingCursor();
-                    firebaseConnection();
+                    DatabaseAPI.FirebaseConnection();
                     break;
                 case "regBtn":
                     Registo();
@@ -48,12 +48,12 @@ namespace QuizAppWPF
             this.NavigationService.Navigate(registo);
         }
 
-        private async Task<Task> login()
+        private async Task<Task> AsyncLogin()
         {
 
             try
             {
-                client = new FireSharp.FirebaseClient(ifc);
+                client = new FireSharp.FirebaseClient(DatabaseAPI.ifc);
             }
             catch
             {

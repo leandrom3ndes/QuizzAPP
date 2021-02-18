@@ -34,7 +34,6 @@ namespace QuizAppWPF
                     break;
 
             }
-            #region Condition
 
         }
 
@@ -44,27 +43,13 @@ namespace QuizAppWPF
             
             try
             {
-                client = new FireSharp.FirebaseClient(ifc);
+                client = new FireSharp.FirebaseClient(DatabaseAPI.ifc);
             }
 
             catch
             {
                 MessageBox.Show("Problema de conexão!");
             }
-            #region Condition
-            if (string.IsNullOrWhiteSpace(UsernameTbox.Text) ||
-               string.IsNullOrWhiteSpace(passTbox.Password) ||
-               string.IsNullOrWhiteSpace(TipoCbox.Text) ||
-               string.IsNullOrWhiteSpace(cursoTbox.Text) ||
-               string.IsNullOrWhiteSpace(nrAlunoTbox.Text))
-            {
-                StopLoadingCursor();
-                MessageBox.Show("Preencha todos os campos!");
-                return Task.CompletedTask;
-            }
-
-            #endregion
-            #endregion
             res = await client.GetAsync(@"Utilizadores/" + UsernameTbox.Text);
 
             await InsertRealtime();

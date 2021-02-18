@@ -8,8 +8,10 @@ namespace QuizAppWPF
     /// </summary>
     public partial class PontuacaoGame : Page
     {
-        public PontuacaoGame(int respostasCertas, int totalRespostas)
+        Game game;
+        public PontuacaoGame(Game game, int respostasCertas, int totalRespostas)
         {
+            this.game = game;
             InitializeComponent();
             ShowScores(respostasCertas, totalRespostas);
         }
@@ -31,14 +33,14 @@ namespace QuizAppWPF
 
             }
         }
-        public static void ClearStats()
+        public void ClearStats()
         {
-            Enunciado.Questoes.Clear();
-            Game.correctAnswerPositionList.Clear();
-            Game.enunciadoQ = 0;
-            Game.RespostasCertas = 0;
-            Game.Pontuacao = 0;
-            Enunciado.pontuacaoMax = 0;
+            game.Enunciado.Questoes.Clear();
+            game.CorrectAnswerPositionList.Clear();
+            game.EnunciadoQ = 0;
+            game.RespostasCertas = 0;
+            game.Pontuacao = 0;
+            game.Enunciado.PontuacaoMax = 0;
         }
 
         private void ShowScores(int respostasCertas, int totalRespostas)

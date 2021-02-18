@@ -15,44 +15,265 @@ namespace QuizAppWPF
     /// <summary>
     /// Interação lógica para Game.xam
     /// </summary>
+    /// 
+    public interface IState<T>
+    {
+        void Avancar();
+    }
+
+    public class StartingGame : IState<Game>
+    {
+        private Game game;
+        public StartingGame(Game game)
+        {
+            this.game = game;
+        }
+
+        public void Avancar()
+        {
+            game.StartGame();
+            game.SetState(game.GetInGameState());
+        }
+    }
+
+    public class InGame : Page, IState<Game>
+    {
+        private Game game;
+        public InGame(Game game)
+        {
+            this.game = game;
+        }
+
+        public void Avancar()
+        {
+            if (game.EnunciadoQ == game.QuestionsNumber - 1)
+            {
+                game.SetState(game.GetEndState());
+                return;
+            }
+            game.EnunciadoQ++;
+            game.NextQuestion();
+        }
+    }
+
+    public class EndOfGame : IState<Game>
+    {
+        private Game game;
+        public EndOfGame(Game game)
+        {
+            this.game = game;
+        }
+
+        public void Avancar()
+        {
+            EndGame();
+        }
+
+        private async void EndGame()
+        {
+            StartLoadingCursor();
+            await DatabaseAPI.PostData(BuildDataObject(), "Scores");
+            StopLoadingCursor();
+            MessageBox.Show("Dados adicionados com sucesso!!");
+            game.PontuacaoGame = new PontuacaoGame(game, game.RespostasCertas, game.QuestionsNumber);
+            game.NavigateToPage(game.PontuacaoGame);
+        }
+
+        private Dictionary<string, object> BuildDataObject()
+        {
+            Dictionary<string, object> data = new Dictionary<string, object>()
+            {
+                {"Username", Login.username},
+                {"categoria", EscolherNumeroPerguntas.globalObj.IdCategoria},
+                {"Pontuacao", game.Pontuacao }
+            };
+
+            return data;
+        }
+    }
+
+    public class BackHome : Page, IState<Game>
+    {
+        private Game game;
+        public BackHome(Game game)
+        {
+            this.game = game;
+        }
+
+        public void Avancar()
+        {
+            MessageBox.Show("Os dados desta sessão foram eliminados.");
+            ClearGameStats();
+            game.NavigateToPage(PageNavigation.optMenu);
+        }
+
+        private void ClearGameStats()
+        {
+            game.Enunciado.Questoes.Clear();
+            game.CorrectAnswerPositionList.Clear();
+            game.EnunciadoQ = 0;
+            game.RespostasCertas = 0;
+            game.Pontuacao = 0;
+            game.Enunciado.PontuacaoMax = 0;
+        }
+    }
+
+    public class NoQuestions : Page, IState<Game>
+    {
+        private Game game;
+        public NoQuestions(Game game)
+        {
+            this.game = game;
+        }
+
+        public void Avancar()
+        {
+            MessageBox.Show("Lamentamos mas não possuímos perguntas suficientes para satisfazer o seu pedido, por favor tente novamente reduzindo o número de perguntas.");
+            game.NavigateToPage(PageNavigation.optMenu);
+        }
+    }
+
+
     public partial class Game : Page
     {
+        IState<Game> inGame;
+        IState<Game> endOfGame;
+        IState<Game> backHome;
+        IState<Game> noQuestions;
+        IState<Game> startingGame;
+
+        IState<Game> state;
 
         DispatcherTimer dispatcherTimer;
-        private int QuestionsNumber { get; set; }
-        public static int Pontuacao { get; set; }  = 0;
-        public static int RespostasCertas { get; set; }  = 0;
+        private int questionsNumber;
+
+        private Enunciado enunciado;
+
+        public Enunciado Enunciado
+        {
+            get { return enunciado; }
+            set { enunciado = value; }
+        }
+
+        public int QuestionsNumber { 
+            get { return questionsNumber; } 
+            set { questionsNumber = value; }
+        }
+
+        private int pontuacao = 0;
+
+        public int Pontuacao
+        {
+            get { return pontuacao; }
+            set { pontuacao = value; }
+        }
+
+        private int respostasCertas = 0;
+
+        public int RespostasCertas
+        {
+            get { return respostasCertas; }
+            set { respostasCertas = value; }
+        }
+
         private readonly static Random Rand = new Random();
-        public static int enunciadoQ { get; set; } = 0; //número da pergunta que o utilizador se encontra
+
+        //número da pergunta que o utilizador se encontra
+        private int enunciadoQ  = 0; 
+
+        public int EnunciadoQ
+        {
+            get { return enunciadoQ;  }
+            set { enunciadoQ = value;  }
+        }
+
         bool hasPressed = false;
-        public static List<string> correctAnswerPositionList = new List<string>();
+
+        private List<string> correctAnswerPositionList = new List<string>();
+
+        public List<string> CorrectAnswerPositionList
+        {
+            get { return correctAnswerPositionList; }
+            set { correctAnswerPositionList = value; }
+        }
 
         private readonly static int CounterMax = 15;
         private static int CounterAtual = CounterMax;
 
         private readonly List<string> positions = new List<string>() { "A", "B", "C", "D" };
 
-        public Game(int QuestionsNumber)
+        private PontuacaoGame pontuacaoGame;
+
+        public PontuacaoGame PontuacaoGame
         {
-            this.QuestionsNumber = QuestionsNumber;
+            get { return pontuacaoGame; }
+            set { pontuacaoGame = value; }
+        }
+
+        public Game(Enunciado enunciado)
+        {
+            this.enunciado = enunciado;
+            questionsNumber = this.enunciado.Questoes.Count;
+            inGame = new InGame(this);
+            endOfGame = new EndOfGame(this);
+            backHome = new BackHome(this);
+            noQuestions = new NoQuestions(this);
+            startingGame = new StartingGame(this);
+
+            if (questionsNumber == 0) state = noQuestions;
+            else state = startingGame;
+
+            System.Diagnostics.Debug.WriteLine(questionsNumber);
+
             InitializeComponent();
         }
 
-        private static async Task<Task> Pontuacao_usernameID()
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            CollectionReference coll = firedatabase.Collection("Scores");
-            Dictionary<string, object> data1 = new Dictionary<string, object>()
-            {
-                {"Username", Login.username},
-                {"categoria", EscolherNumeroPerguntas.globalObj.IdCategoria},
-                {"Pontuacao", Pontuacao }
-            };
-            await coll.AddAsync(data1);
-            MessageBox.Show("Dados adicionados com sucesso!!");
+            string objname = ((Button)sender).Name;
 
-            return Task.CompletedTask;
+            if (positions.Contains(objname) && !hasPressed) HandleButtonPress(objname);
+
+            // other buttons which are not possible answers
+            else
+            {
+                switch (objname)
+                {
+
+                    case "Start":
+                    case "Next":
+                        state.Avancar();
+                        break;
+
+                    case "HomeButton":
+                        state = backHome;
+                        state.Avancar();
+                        break;
+                }
+
+            }
         }
 
+        public void NavigateToPage(object obj)
+        {
+            NavigationService.Navigate(obj);
+        }
+
+        public void SetState(IState<Game> state)
+        {
+            this.state = state;
+            if (state == endOfGame) state.Avancar();
+        }
+
+        public IState<Game> GetEndState()
+        {
+            return endOfGame;
+        }
+
+        public IState<Game> GetInGameState()
+        {
+            return inGame;
+        }
 
         private void StartTimer()
         {
@@ -88,68 +309,7 @@ namespace QuizAppWPF
             CounterAtual = CounterMax;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            string objname = ( (Button) sender ).Name; 
-
-            if ( positions.Contains(objname) && !hasPressed ) HandleButtonPress( objname ); 
-
-            // other buttons which are not possible answers
-            else
-            {
-                switch ( objname )
-                {
-                    case "Next":
-                        enunciadoQ++;
-                        ModifyAllButtons("enable-disable", "true");
-                        Next.Visibility = Visibility.Hidden;
-
-                        if (enunciadoQ < QuestionsNumber) NextQuestion();
-
-                        else GameEnded();
-
-                        break;
-
-                    case "Start":
-                        if (Enunciado.Questoes.Count() <= 0)
-                        {
-                            MessageBox.Show("Lamentamos mas não possuímos perguntas suficientes para satisfazer o seu pedido, por favor tente novamente reduzindo o número de perguntas.");
-                            NavigationService.Navigate(optMenu);
-                        }
-                        else
-                        {
-                            StartGame();
-                        }
-                        break;
-
-                    case "HomeButton":
-                        HomeButtonPressed();
-                        break;
-                }
-
-            }
-        }
-        
-        private void HomeButtonPressed()
-        {
-            if ( dispatcherTimer != null ) StopCounter();
-            MessageBox.Show("Os dados desta sessão foram eliminados.");
-            PontuacaoGame.ClearStats();
-            OptionMenu optionMenu1 = new OptionMenu();
-            NavigationService.Navigate(optionMenu1);
-        }
-
-        private async void GameEnded()
-        {
-            // MessageBox.Show("A sua sessão chegou ao fim. Pressione Ok para descobrir a pontuação que obteve");
-            StartLoadingCursor();
-            await Pontuacao_usernameID();
-            StopLoadingCursor();
-            PontuacaoGame pontGame = new PontuacaoGame(RespostasCertas, QuestionsNumber);
-            NavigationService.Navigate(pontGame);
-        }
-
-        private void StartGame()
+        public void StartGame()
         {
             CreateRandomSequence();
             Start.Visibility = Visibility.Hidden;
@@ -161,7 +321,7 @@ namespace QuizAppWPF
             StartTimer();
         }
 
-        private void NextQuestion()
+        public void NextQuestion()
         {
             hasPressed = false;
             ModifyAllButtons("clear-background");
@@ -180,17 +340,19 @@ namespace QuizAppWPF
 
         private void CreateRandomSequence()
         {
-            for(int i = 0; i < QuestionsNumber; i++)
+            for(int i = 0; i < questionsNumber; i++)
             {
-                correctAnswerPositionList.Add(positions[Rand.Next(0,4)]);  //adiciona a posição A,B,C ou D aleatoriamente numa lista 
+                // adiciona a posição A,B,C ou D aleatoriamente numa lista 
+                correctAnswerPositionList.Add(positions[Rand.Next(0,4)]); 
             }
         }
         
 
         private void ShowQuestion()
         {
-            Question.Content = Enunciado.Questoes[enunciadoQ].Value;
-            if(Enunciado.Questoes[enunciadoQ].Type == "boolean") ShowBooleanAnswer();
+            Next.Visibility = Visibility.Hidden;
+            Question.Content = enunciado.Questoes[enunciadoQ].Value;
+            if(enunciado.Questoes[enunciadoQ].Type == "boolean") ShowBooleanAnswer();
             else
             {
                 if (!C.IsVisible)
@@ -211,7 +373,7 @@ namespace QuizAppWPF
             ModifyDynamicButton( "A" , "new-value", "True");
             ModifyDynamicButton( "B", "new-value", "False" );
 
-            Resposta primeiraResposta = Enunciado.Questoes[enunciadoQ].Respostas[0];
+            Resposta primeiraResposta = enunciado.Questoes[enunciadoQ].Respostas[0];
 
             // se a resposta correta for true, afirmo que o botão A possui a resposta correta
             if ( primeiraResposta.CorrectAnswer)  correctAnswerPositionList[enunciadoQ] = "A"; 
@@ -227,7 +389,7 @@ namespace QuizAppWPF
             List<string> Incorretpositions = positions.ToList();
             Incorretpositions.Remove(correctPosition); //lista das resposta incorretas
             
-            foreach ( Resposta resposta in Enunciado.Questoes[enunciadoQ].Respostas) //percorre as respoostas da questão atual
+            foreach ( Resposta resposta in enunciado.Questoes[enunciadoQ].Respostas) //percorre as respoostas da questão atual
             {
                 //mostrar resposta correta
                 if (resposta.CorrectAnswer) ModifyDynamicButton(correctPosition, "new-value", resposta.Value);
@@ -261,7 +423,7 @@ namespace QuizAppWPF
             //atribuir pontuação
             else
             {
-                Pontuacao += Enunciado.Questoes[enunciadoQ].Pontuacao;
+                Pontuacao += enunciado.Questoes[enunciadoQ].Pontuacao;
                 RespostasCertas += 1;
             }
 

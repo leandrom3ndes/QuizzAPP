@@ -193,6 +193,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DatabaseAPI\DatabaseAPI.cs" />
     <Compile Include="Enunciado.cs" />
     <Compile Include="EscolherDificuldade.xaml.cs">
       <DependentUpon>EscolherDificuldade.xaml</DependentUpon>
@@ -204,6 +205,7 @@
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
     <Compile Include="GlobalMethods.cs" />
+    <Compile Include="PageNavigation\PageNavigation.cs" />
     <Compile Include="PontuacaoGame.xaml.cs">
       <DependentUpon>PontuacaoGame.xaml</DependentUpon>
     </Compile>
@@ -213,6 +215,7 @@
     <Compile Include="Score.xaml.cs">
       <DependentUpon>Score.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TriviaInteractionAPI\TriviaInteractionAPI.cs" />
     <Compile Include="Utilizador.cs" />
     <Compile Include="EscolherCategoria.xaml.cs">
       <DependentUpon>EscolherCategoria.xaml</DependentUpon>
@@ -262,35 +265,35 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <None Include="Config\packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Config\App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="banner.jpg" />
+    <Resource Include="Images\banner.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="neonlights.jpg" />
+    <Resource Include="Images\neonlights.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="readyForQuiz.jpg" />
+    <Resource Include="Images\readyForQuiz.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="quizTime.jpg" />
+    <Resource Include="Images\quizTime.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="neonWall.jpg" />
+    <Resource Include="Images\neonWall.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="neonwallRed.jpg" />
+    <Resource Include="Images\neonwallRed.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="home.png" />
+    <Resource Include="Images\home.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
