@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace QuizAppWPF
+﻿namespace QuizAppWPF
 {
     class Utilizador
     {
@@ -9,7 +7,6 @@ namespace QuizAppWPF
         public string Curso { get; set; }
         public string NrAluno { get; set; }
         public string Password { get; set; }
-
 
         private static string _error = "Dados incorretos. Tente novamente";
 
