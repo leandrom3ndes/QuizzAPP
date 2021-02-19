@@ -210,6 +210,7 @@ namespace QuizAppWPF
             set { pontuacaoGame = value; }
         }
 
+        Timer timer;
         public Game(Enunciado enunciado)
         {
             this.enunciado = enunciado;
@@ -277,17 +278,15 @@ namespace QuizAppWPF
 
         private void StartTimer()
         {
-            dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Tick += new EventHandler(TimerCountdown);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
-            dispatcherTimer.Start();
+            timer = new Timer();
+            timer.StartTimer(this);
             TimerLabel.Width = 800; //volta à largura inicial
             var converter = new BrushConverter();
             TimerLabel.Background = (Brush)converter.ConvertFromString("#FF8BC5B0"); //volta à cor inicial
             ModifyAllButtons("enable-disable", "true");
         }
 
-        private void TimerCountdown(object sender, EventArgs e)
+        public void TimerCountdown(object sender, EventArgs e)
         {
             CounterAtual--;
             TimerLabel.Width = CounterAtual * 800 / CounterMax;
@@ -298,20 +297,15 @@ namespace QuizAppWPF
 
         private void CounterTimeout()
         {
-            StopCounter();
+            timer.CounterTimeout();
+            CounterAtual = CounterMax;
             ModifyAllButtons("enable-disable", "false");
             Next.Visibility = Visibility.Visible;
         }
 
-        private void StopCounter()
-        {
-            dispatcherTimer.Stop();
-            CounterAtual = CounterMax;
-        }
-
         public void StartGame()
         {
-            CreateRandomSequence();
+            GameAux.CreateListWithRandomValues(correctAnswerPositionList, questionsNumber, positions);
             Start.Visibility = Visibility.Hidden;
             ShowQuestion();
             A.Visibility = Visibility.Visible;
@@ -337,16 +331,6 @@ namespace QuizAppWPF
             hasPressed = true;
             
         }
-
-        private void CreateRandomSequence()
-        {
-            for(int i = 0; i < questionsNumber; i++)
-            {
-                // adiciona a posição A,B,C ou D aleatoriamente numa lista 
-                correctAnswerPositionList.Add(positions[Rand.Next(0,4)]); 
-            }
-        }
-        
 
         private void ShowQuestion()
         {
@@ -451,7 +435,7 @@ namespace QuizAppWPF
         private void ModifyDynamicButton(string name, string action, string value = null)
         {
             object dynamicObject = FindName(name);
-            Button dynamicButton = GetButton(dynamicObject);
+            Button dynamicButton = GameAux.GetButton(dynamicObject);
 
             switch ( action )
             {
@@ -481,11 +465,6 @@ namespace QuizAppWPF
                     break;
             }
 
-        }
-
-        private Button GetButton(object buttonObject)
-        {
-            return ((Button)buttonObject);
         }
 
     }
