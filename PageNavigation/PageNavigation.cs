@@ -14,6 +14,5 @@ namespace QuizAppWPF
         public static EscolherCategoria pageCategoria = new EscolherCategoria();
         public static Login loginMenu = new Login();
         public static OptionMenu optMenu = new OptionMenu();
-
     }
 }
