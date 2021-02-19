@@ -14,8 +14,8 @@ namespace QuizAppWPF
     public partial class Registo : Page
     {
 
-        private IFirebaseClient client;
-        private FirebaseResponse res;
+        private IFirebaseClient _firebaseClient;
+        private FirebaseResponse _firebaseResponse;
         public Registo()
         {
             InitializeComponent();
@@ -43,14 +43,14 @@ namespace QuizAppWPF
             
             try
             {
-                client = new FireSharp.FirebaseClient(DatabaseAPI.ifc);
+                _firebaseClient = new FireSharp.FirebaseClient(DatabaseAPI.ifc);
             }
 
             catch
             {
                 MessageBox.Show("Problema de conexão!");
             }
-            res = await client.GetAsync(@"Utilizadores/" + UsernameTbox.Text);
+            _firebaseResponse = await _firebaseClient.GetAsync(@"Utilizadores/" + UsernameTbox.Text);
 
             await InsertRealtime();
 
@@ -61,13 +61,13 @@ namespace QuizAppWPF
         {
             Utilizador user = new Utilizador()
             {
-                nomeUtilizador = UsernameTbox.Text,
-                nomeCurso = cursoTbox.Text,
+                NomeUtilizador = UsernameTbox.Text,
+                NomeCurso = cursoTbox.Text,
                 Curso = TipoCbox.Text,
-                nrAluno = nrAlunoTbox.Text,
+                NrAluno = nrAlunoTbox.Text,
                 Password = passTbox.Password,
             };
-            Utilizador ResUser = res.ResultAs<Utilizador>();    // Resultado da base de dados
+            Utilizador ResUser = _firebaseResponse.ResultAs<Utilizador>();    // Resultado da base de dados
             if (Utilizador.IsEqualName(ResUser, user))
             {
                 StopLoadingCursor();
@@ -75,7 +75,7 @@ namespace QuizAppWPF
             }
             else
             {
-                await client.SetAsync(@"Utilizadores/" + UsernameTbox.Text, user);
+                await _firebaseClient.SetAsync(@"Utilizadores/" + UsernameTbox.Text, user);
                 StopLoadingCursor();
                 MessageBox.Show("Registo efetuado com sucesso!");
                 NavigationService.Navigate(Enunciado.loginMenu);

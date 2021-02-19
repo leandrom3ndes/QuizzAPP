@@ -83,7 +83,7 @@ namespace QuizAppWPF
         {
             Dictionary<string, object> data = new Dictionary<string, object>()
             {
-                {"Username", Login.username},
+                {"Username", Login.Username},
                 {"categoria", EscolherNumeroPerguntas.globalObj.IdCategoria},
                 {"Pontuacao", game.Pontuacao }
             };

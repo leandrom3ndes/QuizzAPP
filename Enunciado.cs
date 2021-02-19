@@ -39,7 +39,7 @@ namespace QuizAppWPF
             ParseData(data);
         }
 
-        public void ParseData(string data)
+        public void ParseData( string data )
         {
             JObject jobject = (JObject)JsonConvert.DeserializeObject(data);
             foreach (JObject result in jobject["results"])
