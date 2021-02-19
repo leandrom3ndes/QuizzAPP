@@ -1,47 +1,45 @@
-﻿using System.Collections.Generic;
-
-namespace QuizAppWPF
+﻿namespace QuizAppWPF
 {
     class Utilizador
     {
-        public string nomeUtilizador { get; set; }
-        public string nomeCurso { get; set; }
+        public string NomeUtilizador { get; set; }
+        public string NomeCurso { get; set; }
         public string Curso { get; set; }
-        public string nrAluno { get; set; }
+        public string NrAluno { get; set; }
         public string Password { get; set; }
-        public List<int> userScores { get; set; }
 
-        private static string error = "Dados incorretos. Tente novamente";
+        private static string _error = "Dados incorretos. Tente novamente";
 
         public static void ShowError()
         {
-            System.Windows.Forms.MessageBox.Show(error);
+            System.Windows.Forms.MessageBox.Show(_error);
         }
 
-        public static bool IsEqual(Utilizador user1, Utilizador user2)
+        public static bool IsEqual(Utilizador User1, Utilizador User2)
         {
-            if (user1 == null || user2 == null) { return false; }
+            if (User1 == null || User2 == null) { return false; }
 
-            if (user1.nomeUtilizador != user2.nomeUtilizador)
+            if (User1.NomeUtilizador != User2.NomeUtilizador)
             {
-                error = "Nome de utilizador incorreto!";
+                _error = "Nome de utilizador incorreto!";
                 return false;
             }
 
-            else if (user1.Password != user2.Password)
+            else if (User1.Password != User2.Password)
             {
-                error = "Palavra passe incorreta!";
+                _error = "Palavra passe incorreta!";
                 return false;
             }
             return true;
         }
-        public static bool IsEqualName(Utilizador user1, Utilizador user2)
-        {
-            if (user1 == null || user2 == null) { return false; }
 
-            if (user1.nomeUtilizador == user2.nomeUtilizador)
+        public static bool IsEqualName(Utilizador User1, Utilizador User2)
+        {
+            if (User1 == null || User2 == null) { return false; }
+
+            if (User1.NomeUtilizador == User2.NomeUtilizador)
             {
-                error = "Nome de utilizador já existe";
+                _error = "Nome de utilizador já existe";
                 return true;
             }
             return true;

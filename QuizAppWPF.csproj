@@ -204,6 +204,7 @@
     <Compile Include="Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameAux.cs" />
     <Compile Include="GlobalMethods.cs" />
     <Compile Include="PageNavigation\PageNavigation.cs" />
     <Compile Include="PontuacaoGame.xaml.cs">

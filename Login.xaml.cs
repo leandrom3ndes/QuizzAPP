@@ -14,9 +14,9 @@ namespace QuizAppWPF
 
     public partial class Login : Page
     {
-        public static string username { get; set; }
-        private IFirebaseClient client;
-        private FirebaseResponse res;
+        public static string Username { get; set; }
+        private IFirebaseClient _firebaseClient;
+        private FirebaseResponse _firebaseResponse;
 
         public Login()
         { 
@@ -37,11 +37,9 @@ namespace QuizAppWPF
                 case "regBtn":
                     Registo();
                     break;
-
             }
-            #region Condition
-            
         }
+
         private void Registo()
         {
             Registo registo = new Registo();
@@ -53,7 +51,7 @@ namespace QuizAppWPF
 
             try
             {
-                client = new FireSharp.FirebaseClient(DatabaseAPI.ifc);
+                _firebaseClient = new FireSharp.FirebaseClient(DatabaseAPI.ifc);
             }
             catch
             {
@@ -65,9 +63,8 @@ namespace QuizAppWPF
             {
                 MessageBox.Show("Preencha todos os campos!");
             }
-            #endregion
             StartLoadingCursor();
-            res = await client.GetAsync(@"Utilizadores/" + UsernameTbox.Text);
+            _firebaseResponse = await _firebaseClient.GetAsync(@"Utilizadores/" + UsernameTbox.Text);
             StopLoadingCursor();
             
             await VerifyLogin();
@@ -78,15 +75,15 @@ namespace QuizAppWPF
         {
             Utilizador CurUser = new Utilizador()               // Informação do utilizador
             {
-                nomeUtilizador = UsernameTbox.Text,
+                NomeUtilizador = UsernameTbox.Text,
                 Password = passTbox.Password
             };
-            Utilizador ResUser = res.ResultAs<Utilizador>();    // Resultado da base de dados
+            Utilizador ResUser = _firebaseResponse.ResultAs<Utilizador>();    // Resultado da base de dados
 
             //Caso os dados estejam corretos é redireccionado para a APP
             if (Utilizador.IsEqual(ResUser, CurUser))
             {
-                username = UsernameTbox.Text;
+                Username = UsernameTbox.Text;
                 OptionMenu oP = new OptionMenu();
                 NavigationService.Navigate(oP);
             }
