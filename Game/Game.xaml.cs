@@ -294,14 +294,14 @@ namespace QuizAppWPF
         private void CounterTimeout()
         {
             timer.CounterTimeout();
-            CounterAtual = CounterMax;
+            _counterAtual = _counterMax;
             ModifyAllButtons("enable-disable", "false");
             Next.Visibility = Visibility.Visible;
         }
 
         public void StartGame()
         {
-            GameAux.CreateListWithRandomValues(correctAnswerPositionList, questionsNumber, positions);
+            GameAux.CreateListWithRandomValues(_correctAnswerPositionList, _questionsNumber, _positions);
             Start.Visibility = Visibility.Hidden;
             ShowQuestion();
             A.Visibility = Visibility.Visible;
@@ -322,7 +322,7 @@ namespace QuizAppWPF
         private void HandleButtonPress(string buttonPressed)
         {
             timer.CounterTimeout();
-            CounterAtual = CounterMax;
+            _counterAtual = _counterMax;
             VerifyAnswer( buttonPressed );
             Next.Visibility = Visibility.Visible;
             hasPressed = true;
@@ -432,7 +432,7 @@ namespace QuizAppWPF
         private void ModifyDynamicButton(string name, string action, string value = null)
         {
             object DynamicObject = FindName(name);
-            Button DynamicButton = GetButton(DynamicObject);
+            Button DynamicButton = GameAux.GetButton(DynamicObject);
 
             System.Diagnostics.Debug.WriteLine("Name: " + name + " Action: " + action);
 

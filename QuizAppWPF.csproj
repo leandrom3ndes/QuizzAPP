@@ -165,23 +165,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="EscolherCategoria.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="EscolherDificuldade.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="EscolherNumeroPerguntas.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Game.xaml">
+    <Page Include="Game\EscolherCategoria.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Login.xaml">
+    <Page Include="Game\EscolherDificuldade.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Game\EscolherNumeroPerguntas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Game\Game.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Game\OptionMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Game\PontuacaoGame.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Game\Score.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="User\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -195,60 +207,48 @@
     </Compile>
     <Compile Include="DatabaseAPI\DatabaseAPI.cs" />
     <Compile Include="Enunciado.cs" />
-    <Compile Include="EscolherDificuldade.xaml.cs">
+    <Compile Include="Game\GameAux.cs" />
+    <Compile Include="Game\EscolherCategoria.xaml.cs">
+      <DependentUpon>EscolherCategoria.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Game\EscolherDificuldade.xaml.cs">
       <DependentUpon>EscolherDificuldade.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EscolherNumeroPerguntas.xaml.cs">
+    <Compile Include="Game\EscolherNumeroPerguntas.xaml.cs">
       <DependentUpon>EscolherNumeroPerguntas.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Game.xaml.cs">
+    <Compile Include="Game\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GameAux.cs" />
-    <Compile Include="PageNavigation\PageNavigation.cs" />
-    <Compile Include="PontuacaoGame.xaml.cs">
+    <Compile Include="Game\OptionMenu.xaml.cs">
+      <DependentUpon>OptionMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Game\PontuacaoGame.xaml.cs">
       <DependentUpon>PontuacaoGame.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Registo.xaml.cs">
-      <DependentUpon>Registo.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Score.xaml.cs">
+    <Compile Include="Game\Score.xaml.cs">
       <DependentUpon>Score.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageNavigation\PageNavigation.cs" />
+    <Compile Include="User\Registo.xaml.cs">
+      <DependentUpon>Registo.xaml</DependentUpon>
     </Compile>
     <Compile Include="TriviaInteractionAPI\TriviaInteractionAPI.cs" />
     <Compile Include="UI\LoadingCursor\LoadingCursor.cs" />
-    <Compile Include="Utilizador.cs" />
-    <Compile Include="EscolherCategoria.xaml.cs">
-      <DependentUpon>EscolherCategoria.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Login.xaml.cs">
+    <Compile Include="User\Utilizador.cs" />
+    <Compile Include="User\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="OptionMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="PontuacaoGame.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Registo.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Score.xaml">
+    <Page Include="User\Registo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OptionMenu.xaml.cs">
-      <DependentUpon>OptionMenu.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
