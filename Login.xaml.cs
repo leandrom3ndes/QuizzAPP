@@ -3,7 +3,6 @@ using System.Windows;
 using System.Windows.Controls;
 using FireSharp.Response;
 using FireSharp.Interfaces;
-using static GlobalMethods.GlobalMethods;
 
 namespace QuizAppWPF
 {
@@ -29,9 +28,9 @@ namespace QuizAppWPF
             switch (objname)
             {
                 case "LoginBtn":
-                    StartLoadingCursor();
+                    LoadingCursor.StartLoadingCursor();
                     await AsyncLogin();
-                    StopLoadingCursor();
+                    LoadingCursor.StopLoadingCursor();
                     DatabaseAPI.FirebaseConnection();
                     break;
                 case "regBtn":
@@ -63,9 +62,9 @@ namespace QuizAppWPF
             {
                 MessageBox.Show("Preencha todos os campos!");
             }
-            StartLoadingCursor();
+            LoadingCursor.StartLoadingCursor();
             _firebaseResponse = await _firebaseClient.GetAsync(@"Utilizadores/" + UsernameTbox.Text);
-            StopLoadingCursor();
+            LoadingCursor.StopLoadingCursor();
             
             await VerifyLogin();
             return Task.CompletedTask;

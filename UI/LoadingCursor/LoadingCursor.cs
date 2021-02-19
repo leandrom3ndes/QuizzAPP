@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Threading;
+﻿using System.Windows.Input;
 
 namespace QuizAppWPF
 {
     class LoadingCursor
     {
-        
+        public static void StartLoadingCursor()
+        {
+            Mouse.OverrideCursor = Cursors.Wait;
+        }
+
+        public static void StopLoadingCursor()
+        {
+            Mouse.OverrideCursor = null;
+        }
 
     }
 }

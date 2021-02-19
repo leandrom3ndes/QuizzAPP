@@ -4,7 +4,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Google.Cloud.Firestore;
-using static GlobalMethods.GlobalMethods;
 
 namespace QuizAppWPF
 {
@@ -22,7 +21,7 @@ namespace QuizAppWPF
 
         private async Task GetScores()
         {
-            string userNameAux = Login.username;
+            string userNameAux = Login.Username;
             CollectionReference coll = DatabaseAPI.firedatabase.Collection("Scores");
             Query scoresQuery;
             if (searchTypeSelected == "user")
@@ -78,9 +77,9 @@ namespace QuizAppWPF
                     NavigationService.Navigate(PageNavigation.optMenu);
                     break;
                 case "ShowScore":
-                    StartLoadingCursor();
+                    LoadingCursor.StartLoadingCursor();
                     await GetScores();
-                    StopLoadingCursor();
+                    LoadingCursor.StopLoadingCursor();
                     break;
             }
         }

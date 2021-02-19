@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using static GlobalMethods.GlobalMethods;
 
 namespace QuizAppWPF
 {
@@ -64,9 +63,9 @@ namespace QuizAppWPF
 
             if (!isNumber || !isNumberFromCat) throw new ArgumentException("Número inválido!");
 
-            string url = ReplaceString(TriviaInteractionAPI.BaseUrl, "REPLACENUMBER", nrPerguntas);
+            string url = TriviaInteractionAPI.BaseUrl.Replace("REPLACENUMBER", nrPerguntas);
 
-            url = ReplaceString(url, "REPLACE_CATEGORY", idCategoria);
+            url = url.Replace("REPLACE_CATEGORY", idCategoria);
 
             if (dificuldade != "random") url += "&difficulty=" + dificuldade;
             return url;

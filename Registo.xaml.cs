@@ -4,7 +4,6 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using FireSharp.Response;
 using FireSharp.Interfaces;
-using static GlobalMethods.GlobalMethods;
 
 namespace QuizAppWPF
 {
@@ -39,7 +38,7 @@ namespace QuizAppWPF
 
         private async Task<Task> Register()
         {
-            StartLoadingCursor();
+            LoadingCursor.StartLoadingCursor();
             
             try
             {
@@ -70,13 +69,13 @@ namespace QuizAppWPF
             Utilizador ResUser = _firebaseResponse.ResultAs<Utilizador>();    // Resultado da base de dados
             if (Utilizador.IsEqualName(ResUser, user))
             {
-                StopLoadingCursor();
+                LoadingCursor.StopLoadingCursor();
                 MessageBox.Show("O utilizador já existe! Escolha outro nome.");
             }
             else
             {
                 await _firebaseClient.SetAsync(@"Utilizadores/" + UsernameTbox.Text, user);
-                StopLoadingCursor();
+                LoadingCursor.StopLoadingCursor();
                 MessageBox.Show("Registo efetuado com sucesso!");
                 NavigationService.Navigate(Enunciado.loginMenu);
             }

@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Windows.Threading;
-using Google.Cloud.Firestore;
-using static GlobalMethods.GlobalMethods;
 
 namespace QuizAppWPF
 {
@@ -71,9 +68,9 @@ namespace QuizAppWPF
 
         private async void EndGame()
         {
-            StartLoadingCursor();
+            LoadingCursor.StartLoadingCursor();
             await DatabaseAPI.PostData(BuildDataObject(), "Scores");
-            StopLoadingCursor();
+            LoadingCursor.StopLoadingCursor();
             MessageBox.Show("Dados adicionados com sucesso!!");
             game.PontuacaoGame = new PontuacaoGame(game, game.RespostasCertas, game.QuestionsNumber);
             game.NavigateToPage(game.PontuacaoGame);
@@ -144,7 +141,6 @@ namespace QuizAppWPF
 
         IState<Game> state;
 
-        DispatcherTimer dispatcherTimer;
         private int questionsNumber;
 
         private Enunciado enunciado;
@@ -325,7 +321,8 @@ namespace QuizAppWPF
 
         private void HandleButtonPress(string buttonPressed)
         {
-            StopCounter();
+            timer.CounterTimeout();
+            CounterAtual = CounterMax;
             VerifyAnswer( buttonPressed );
             Next.Visibility = Visibility.Visible;
             hasPressed = true;
@@ -417,6 +414,7 @@ namespace QuizAppWPF
 
         private void ModifyAllButtons( string action, string value = null )
         {
+            System.Diagnostics.Debug.WriteLine("Action: " + action);
             foreach (string buttonName in positions)
             {
                 ModifyDynamicButton(buttonName, action, value);
@@ -436,6 +434,8 @@ namespace QuizAppWPF
         {
             object dynamicObject = FindName(name);
             Button dynamicButton = GameAux.GetButton(dynamicObject);
+
+            System.Diagnostics.Debug.WriteLine("Name: " + name + " Action: " + action);
 
             switch ( action )
             {
