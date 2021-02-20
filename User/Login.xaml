@@ -23,7 +23,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Image Source="Images/quizTime.jpg" Stretch="Fill" Grid.ColumnSpan="5" Grid.RowSpan="4"/>
+        <Image Source="../Images/quizTime.jpg" Stretch="Fill" Grid.ColumnSpan="5" Grid.RowSpan="4"/>
 
         <Label Content="Nome de utilizador" Grid.Column="1" HorizontalAlignment="Left" Margin="111,84,0,0" VerticalAlignment="Top" Width="369" Grid.ColumnSpan="3" FontSize="30" FontWeight="Bold" Background="#00000000" Foreground="#FFC9B5B5" Grid.RowSpan="2"/>
         <Label Content="Palavra passe" Grid.Column="1" HorizontalAlignment="Left" Margin="111,44,0,0" VerticalAlignment="Top" Width="201" Grid.ColumnSpan="2" FontSize="30" FontWeight="Bold" Background="#00000000" Foreground="#FFC9B5B5" Grid.Row="1"/>

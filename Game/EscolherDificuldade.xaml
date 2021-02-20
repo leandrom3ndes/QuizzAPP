@@ -11,7 +11,7 @@
             <ColumnDefinition Width="99*"/>
             <ColumnDefinition Width="101*"/>
         </Grid.ColumnDefinitions>
-        <Image Source="Images/neonWall.jpg" Stretch="Fill" Grid.ColumnSpan="2" Margin="0,0,0,-0.4"/>
+        <Image Source="../Images/neonWall.jpg" Stretch="Fill" Grid.ColumnSpan="2" Margin="0,0,0,-0.4"/>
         <Label Content="Escolha a dificuldade" Name="info" HorizontalAlignment="Left" Margin="143,-15,-167,0" VerticalAlignment="Top" Width="824" Height="72" FontSize="48" FontWeight="Bold" RenderTransformOrigin="0.52,0.864" Grid.ColumnSpan="2" Background="{x:Null}" OpacityMask="White">
             <Label.Foreground>
                 <LinearGradientBrush EndPoint="0.5,0.7" StartPoint="0.5,1.3">

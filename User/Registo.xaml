@@ -23,7 +23,7 @@
             <RowDefinition Height="111*" />
         </Grid.RowDefinitions>
 
-        <Image Source="Images/quizTime.jpg" Stretch="Fill" Grid.ColumnSpan="5" Grid.RowSpan="5" Margin="-65,0,-42,0"/>
+        <Image Source="../Images/quizTime.jpg" Stretch="Fill" Grid.ColumnSpan="5" Grid.RowSpan="5" Margin="-65,0,-42,0"/>
 
         <Label Content="Nome de utilizador" Grid.Column="1" HorizontalAlignment="Left" Margin="80,10,0,0" VerticalAlignment="Top" Width="247" Grid.ColumnSpan="3" FontSize="25" FontWeight="Bold" Background="#00000000" Foreground="#FFC9B5B5" Height="43"/>
         <Label Content="Tipo de aluno" Grid.Column="1" HorizontalAlignment="Left" Margin="80,70,0,0" VerticalAlignment="Top" Width="183" Grid.ColumnSpan="2" FontSize="25" FontWeight="Bold" Background="#00000000" Foreground="#FFC9B5B5" Height="43"/>
@@ -43,7 +43,7 @@
         <Button Name="regBtn" Content="Registar" HorizontalAlignment="Left" Margin="60,10,0,0" VerticalAlignment="Top" Width="267" Height="60" BorderBrush="#FF16A6A0" FontSize="36" Click="RegBtnClick" Foreground="White" Background="{x:Null}" Grid.ColumnSpan="3" Grid.Row="4" Grid.Column="1"/>
         <Button x:Name="HomeButton123" Click="RegBtnClick" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Margin="28,10,0,0" Height="74" BorderBrush="{x:Null}" Foreground="{x:Null}" Grid.Column="4">
             <Button.Background>
-                <ImageBrush ImageSource="Images/home.png" Stretch="UniformToFill"/>
+                <ImageBrush ImageSource="../Images/home.png" Stretch="UniformToFill"/>
             </Button.Background>
         </Button>
     </Grid>

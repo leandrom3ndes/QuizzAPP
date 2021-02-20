@@ -193,10 +193,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="User\Login.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -207,7 +203,6 @@
     </Compile>
     <Compile Include="DatabaseAPI\DatabaseAPI.cs" />
     <Compile Include="Enunciado.cs" />
-    <Compile Include="Game\GameAux.cs" />
     <Compile Include="Game\EscolherCategoria.xaml.cs">
       <DependentUpon>EscolherCategoria.xaml</DependentUpon>
     </Compile>
@@ -220,6 +215,7 @@
     <Compile Include="Game\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Game\GameAux.cs" />
     <Compile Include="Game\OptionMenu.xaml.cs">
       <DependentUpon>OptionMenu.xaml</DependentUpon>
     </Compile>
@@ -230,22 +226,26 @@
       <DependentUpon>Score.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageNavigation\PageNavigation.cs" />
-    <Compile Include="User\Registo.xaml.cs">
-      <DependentUpon>Registo.xaml</DependentUpon>
-    </Compile>
     <Compile Include="TriviaInteractionAPI\TriviaInteractionAPI.cs" />
     <Compile Include="UI\LoadingCursor\LoadingCursor.cs" />
-    <Compile Include="User\Utilizador.cs" />
     <Compile Include="User\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User\Registo.xaml.cs">
+      <DependentUpon>Registo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User\Utilizador.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="User\Registo.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="User\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="User\Registo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
